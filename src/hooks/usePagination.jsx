@@ -10,7 +10,7 @@ const usePagination = (data, volume = 5) => {
   const slicedData = useMemo(
     () => data.slice(page * volume, page * volume + volume),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [volume, page]
+    [volume, page, data]
   );
 
   return { data: slicedData, page, totalPages, setPage };
