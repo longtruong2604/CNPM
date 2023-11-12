@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import Container from "@mui/material/Container";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import {
   Avatar,
   Box,
@@ -9,15 +8,16 @@ import {
   Pagination,
   Typography,
 } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2/Grid2";
 
-import DescriptionIcon from "@mui/icons-material/Description";
-import { PrinterListRow } from "../../components/PrinterListRow";
 import CircleIcon from "@mui/icons-material/Circle";
-import { SearchBar } from "../../components/SearchBar";
+import DescriptionIcon from "@mui/icons-material/Description";
 import { green } from "@mui/material/colors";
-import { MOCK_DATA } from "./MOCK_DATA";
+import { PrinterListRow } from "../../components/PrinterListRow";
+import { SearchBar } from "../../components/SearchBar";
 import BasicSelect from "../../components/Select";
 import usePagination from "../../hooks/usePagination";
+import { MOCK_DATA } from "./MOCK_DATA";
 
 const colHeader = () => ({
   textAlign: "center",
@@ -34,22 +34,29 @@ export const PrinterList = () => {
     printerStatus: "",
   });
 
-  const filterData = () => {
-    return MOCK_DATA.filter((item) => {
-      return search.toLowerCase() === ""
-        ? item
-        : item.printerName.toLowerCase().includes(search.toLowerCase());
-    }).filter(
-      (item) =>
-        (item.venue === content.venue || !content.venue) &&
-        (item.building === content.building || !content.building) &&
-        (item.printerStatus === content.printerStatus || !content.printerStatus)
-    );
-  };
+  const [filteredData, setFilteredData] = useState(MOCK_DATA);
+  const { data, page, totalPages, setPage } = usePagination(filteredData);
 
-  const { data, page, totalPages, setPage } = usePagination(filterData());
+  useEffect(() => {
+    setFilteredData(
+      MOCK_DATA.filter((item) => {
+        return search.toLowerCase() === ""
+          ? item
+          : item.printerName.toLowerCase().includes(search.toLowerCase());
+      }).filter(
+        (item) =>
+          (item.venue === content.venue || !content.venue) &&
+          (item.building === content.building || !content.building) &&
+          (item.printerStatus === content.printerStatus ||
+            !content.printerStatus)
+      )
+    );
+
+    setPage(0);
+  }, [search, content]);
+
   return (
-    <Box className="content" margin={5}>
+    <Box className="content" margin={2}>
       <Grid container spacing={1} className="user-info-container" mb={2}>
         <Grid lg="auto" sx={{}}>
           <Avatar
@@ -64,7 +71,7 @@ export const PrinterList = () => {
             H
           </Avatar>
         </Grid>
-        <Grid lg={3}>
+        <Grid lg="auto">
           <Box>
             <Typography variant="h5" sx={{ fontWeight: 500 }}>
               Trương Thành Long
@@ -170,7 +177,6 @@ export const PrinterList = () => {
           page={page + 1}
           count={totalPages}
           onChange={(event, value) => {
-            console.log(value);
             setPage(value - 1);
           }}
           variant="outlined"
