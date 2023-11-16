@@ -25,10 +25,11 @@ import Badge from "@mui/material/Badge";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
-  backgroundColor: "#023556",
+  backgroundColor: "#01121E",
   width: drawerWidth,
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
@@ -38,7 +39,7 @@ const openedMixin = (theme) => ({
 });
 
 const closedMixin = (theme) => ({
-  backgroundColor: "#023556",
+  backgroundColor: "#01121E",
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -107,155 +108,165 @@ export default function MenuBar() {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{ backgroundColor: "#023556" }}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
+    
+      <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <CssBaseline />
+        <AppBar position="fixed" open={open} sx={{ backgroundColor: "#023556" }}>
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={{
+                marginRight: 5,
+                ...(open && { display: "none" }),
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <img
+              alt="logo_bk"
+              src="/logo_bk.png"
+              style={{
+                width: 132,
+                height: 52,
+              }}
+            />
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <IconButton
+                size="large"
+                aria-label="show 1 new notifications"
+                color="inherit"
+              >
+                <Badge badgeContent={1} color="error">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+              <IconButton
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <IconButton>
+                <Typography variant="h6" color="white">
+                  Trương Thành Long
+                </Typography>
+              </IconButton>
+              <IconButton>
+                <img
+                  alt="logo_bk"
+                  src="/vietnam.png"
+                  style={{
+                    width: 30,
+                    height: 30,
+                  }}
+                />
+              </IconButton>
+              <IconButton>
+                <img
+                  alt="logo_bk"
+                  src="/usa.png"
+                  style={{
+                    width: 28,
+                    height: 28,
+                  }}
+                />
+              </IconButton>
+            </Box>
+          </Toolbar>
+        </AppBar>
+        <Drawer variant="permanent" open={open}>
+          <DrawerHeader>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === "rtl" ? (
+                <ChevronRightIcon sx={{ color: "white" }} />
+              ) : (
+                <ChevronLeftIcon sx={{ color: "white" }} />
+              )}
+            </IconButton>
+          </DrawerHeader>
+          <Divider sx={{ backgroundColor: "#455a64" }} />
+          <List
             sx={{
-              marginRight: 5,
-              ...(open && { display: "none" }),
+              color: "white",
+              paddingTop: 0,
+              paddingBottom: 0,
             }}
           >
-            <MenuIcon />
-          </IconButton>
-          <img
-            alt="logo_bk"
-            src="/logo_bk.png"
-            style={{
-              width: 132,
-              height: 52,
-            }}
-          />
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton
-              size="large"
-              aria-label="show 1 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={1} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-            <IconButton>
-              <Typography variant="h6" color="white">
-                Trương Thành Long
-              </Typography>
-            </IconButton>
-            <IconButton>
-              <img
-                alt="logo_bk"
-                src="/vietnam.png"
-                style={{
-                  width: 30,
-                  height: 30,
-                }}
-              />
-            </IconButton>
-            <IconButton>
-              <img
-                alt="logo_bk"
-                src="/usa.png"
-                style={{
-                  width: 28,
-                  height: 28,
-                }}
-              />
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon sx={{ color: "white" }} />
-            ) : (
-              <ChevronLeftIcon sx={{ color: "white" }} />
-            )}
-          </IconButton>
-        </DrawerHeader>
-        <Divider sx={{ backgroundColor: "#455a64" }} />
-        <List
-          sx={{
-            color: "white",
-            paddingTop: 0,
-            paddingBottom: 0,
-          }}
-        >
-          {[
-            {
-              text: "Trang chủ",
-              icon: <HomeIcon fontSize="medium" sx={{ color: "white" }} />,
-            },
-            {
-              text: "Lịch sử",
-              icon: <UpdateIcon fontSize="medium" sx={{ color: "white" }} />,
-            },
-            {
-              text: "Hỗ trợ",
-              icon: <BuildIcon fontSize="medium" sx={{ color: "white" }} />,
-            },
-            {
-              text: "Đăng xuất",
-              icon: <LogoutIcon fontSize="medium" sx={{ color: "white" }} />,
-            },
-          ].map((item, index) => (
-            <React.Fragment key={item.text}>
-              <ListItem
-                disablePadding
-                sx={{ display: "block", backgroundColor: "#" }}
-              >
-                <ListItemButton
-                  sx={{
-                    minHeight: 60,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
-                  }}
+            {[
+              {
+                text: "Trang chủ",
+                icon: <HomeIcon fontSize="medium" sx={{ color: "white" }} />,
+                link: '/home'
+              },
+              {
+                text: "Lịch sử",
+                icon: <UpdateIcon fontSize="medium" sx={{ color: "white" }} />,
+              },
+              {
+                text: "Hỗ trợ",
+                icon: <BuildIcon fontSize="medium" sx={{ color: "white" }} />,
+              },
+              {
+                text: "Đăng xuất",
+                icon: <LogoutIcon fontSize="medium" sx={{ color: "white" }} />,
+              },
+            ].map((item, index) => (
+              <React.Fragment key={item.text}>
+                <ListItem
+                  disablePadding
+                  sx={{ display: "block", backgroundColor: "#" }}
                 >
-                  <ListItemIcon
+                  <ListItemButton
+                    
                     sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      // color : 'white',
-                      justifyContent: "center",
-                      fontSize: 28, // Adjust the icon size as needed
+                      minHeight: 60,
+                      justifyContent: open ? "initial" : "center",
+                      px: 2.5,
                     }}
                   >
-                    {item.icon}
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={item.text}
-                    sx={{ opacity: open ? 1 : 0 }}
-                  />
-                </ListItemButton>
-              </ListItem>
-              {index < 3 && <Divider sx={{ backgroundColor: "#455a64" }} />}{" "}
-              {/* Add a divider for all items except the last one */}
-            </React.Fragment>
-          ))}
-        </List>
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : "auto",
+                        justifyContent: "center",
+                        fontSize: 28,
+                      }}
+                    >
+                      {item.icon}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={item.text}
+                      sx={{ opacity: open ? 1 : 0 }}
+                    />
+                  </ListItemButton>
+                </ListItem>
+                {index < 3 && <Divider sx={{ backgroundColor: "#455a64" }} />}
+              </React.Fragment>
+            ))}
+          </List>
+          <Divider sx={{ backgroundColor: "#455a64" }} />
+        </Drawer>
+        <Box component="main" sx={{ flexGrow: 1, p: 8 }}>
+          <DrawerHeader />
+          <PrinterList />
+         
 
-        <Divider sx={{ backgroundColor: "#455a64" }} />
-      </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-        <PrinterList />
+        </Box>
+        <Toolbar sx={{ backgroundColor: '#023556', flexShrink: 0, color: '#fff', fontSize: '16px' }}>
+          <Typography sx={{ marginLeft: '7%' }}>
+            Copyright@2023.Nhóm-1 L02 Trường Đại học Bách Khoa TP.HCM
+          </Typography>
+        </Toolbar>
       </Box>
-    </Box>
+     
+
+  
   );
 }
