@@ -8,10 +8,10 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
 import * as React from "react";
-import "./Home.css";
+import "./LandingPage.css";
 import Footer from "../../components/Footer";
 
-function Home(props) {
+function LandingPage(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -116,8 +116,8 @@ function Home(props) {
   );
 }
 
-Home.propTypes = {
+LandingPage.propTypes = {
   window: PropTypes.func,
 };
 
-export default Home;
+export default LandingPage;

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { InputBase, alpha, styled } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { InputBase, alpha, styled } from "@mui/material";
+import React from "react";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -36,9 +36,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: "12ch",
+      width: "20ch",
       "&:focus": {
-        width: "20ch",
+        width: "25ch",
       },
     },
   },

@@ -13,7 +13,7 @@ const usePagination = (data, volume = 5) => {
     [volume, page, data]
   );
 
-  return { data: slicedData, page, totalPages, setPage };
+  return { data: slicedData, page, totalPages, setPage, volume };
 };
 
 export default usePagination;
