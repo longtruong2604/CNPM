@@ -8,7 +8,7 @@ const RootLayout = () => {
   return (
     <Box
       sx={{
-        background: 'url("./backGround.png") fixed center',
+        background: 'url("/backGround.png") fixed center',
         backgroundSize: "100% 100%",
         minHeight: "100vh",
         display: "flex",

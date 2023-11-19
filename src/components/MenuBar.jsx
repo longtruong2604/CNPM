@@ -200,27 +200,28 @@ export default function MenuBar(props) {
             {
               text: "Trang chủ",
               icon: <HomeIcon fontSize="medium" sx={{ color: "white" }} />,
-              link: "/home",
+              to: "/app/",
             },
             {
               text: "Lịch sử",
               icon: <UpdateIcon fontSize="medium" sx={{ color: "white" }} />,
+              to: "/#",
             },
             {
               text: "Hỗ trợ",
               icon: <BuildIcon fontSize="medium" sx={{ color: "white" }} />,
+              to: "/#",
             },
             {
               text: "Đăng xuất",
               icon: <LogoutIcon fontSize="medium" sx={{ color: "white" }} />,
+              to: "/#",
             },
           ].map((item, index) => (
             <React.Fragment key={item.text}>
-              <ListItem
-                disablePadding
-                sx={{ display: "block", backgroundColor: "#" }}
-              >
+              <ListItem disablePadding sx={{ display: "block" }}>
                 <ListItemButton
+                  to={item.to}
                   sx={{
                     minHeight: 60,
                     justifyContent: open ? "initial" : "center",

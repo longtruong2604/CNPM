@@ -30,7 +30,7 @@ function FuncSelect() {
           <figure>
             <img
               onClick={() => setbuttonPopup(true)}
-              src="paper.png"
+              src="/paper.png"
               className="logo"
               alt="Paper"
               target="_blank"
@@ -38,7 +38,7 @@ function FuncSelect() {
             <figcaption>Tải tài liệu</figcaption>
           </figure>
           <figure>
-            <img src="cash.png" className="logo" alt="Cash" target="_blank" />
+            <img src="/cash.png" className="logo" alt="Cash" target="_blank" />
             <figcaption>Thanh toán</figcaption>
           </figure>
         </Box>
