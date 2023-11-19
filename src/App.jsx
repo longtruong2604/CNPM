@@ -9,7 +9,8 @@ import MenuBar from "./components/MenuBar";
 import Home from "./pages/Home/Home";
 import { PrinterList } from "./pages/PrinterList/PrinterList";
 import Footer from "./components/Footer";
-
+import LoginAsStudent from "./pages/Login/LoginAsStudent"
+import LoginPermission from "./pages/Login/LoginPermission"
 function App() {
   return (
     <Routes>
@@ -36,6 +37,8 @@ function App() {
         }
       />
       <Route path="/" element={<Home />} />
+      <Route path="studentlogin" element={<LoginAsStudent />} />
+      <Route path="adminlogin" element={<LoginPermission />} />
     </Routes>
   );
 }
