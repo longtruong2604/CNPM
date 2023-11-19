@@ -15,7 +15,7 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import { green } from "@mui/material/colors";
 import { PrinterListRow } from "../../components/PrinterListRow";
 import { SearchBar } from "../../components/SearchBar";
-import BasicSelect from "../../components/Select";
+import BasicSelect from "../../components/BasicSelect";
 import usePagination from "../../hooks/usePagination";
 import { MOCK_DATA } from "./MOCK_DATA";
 
@@ -42,7 +42,8 @@ export const PrinterList = () => {
       MOCK_DATA.filter((item) => {
         return search.toLowerCase() === ""
           ? item
-          : item.printerName.toLowerCase().includes(search.toLowerCase());
+          : item.printerName.toLowerCase().includes(search.toLowerCase()) ||
+              item.ID.toLowerCase().includes(search.toLowerCase());
       }).filter(
         (item) =>
           (item.venue === content.venue || !content.venue) &&
@@ -125,7 +126,37 @@ export const PrinterList = () => {
               id={"building"}
               value={"Tòa"}
               handleFilter={{ content: content.building, setContent }}
-              items={[...new Set(MOCK_DATA.map((item) => item.building))]}
+              items={
+                content.venue === ""
+                  ? [
+                      ...new Set(
+                        MOCK_DATA.sort(function (a, b) {
+                          if (a.building > b.building) {
+                            return 1;
+                          }
+                          if (b.building > a.building) {
+                            return -1;
+                          }
+                          return 0;
+                        }).map((item) => item.building)
+                      ),
+                    ]
+                  : [
+                      ...new Set(
+                        MOCK_DATA.filter((item) => item.venue === content.venue)
+                          .sort(function (a, b) {
+                            if (a.building > b.building) {
+                              return 1;
+                            }
+                            if (b.building > a.building) {
+                              return -1;
+                            }
+                            return 0;
+                          })
+                          .map((item) => item.building)
+                      ),
+                    ]
+              }
             ></BasicSelect>
           </Grid>
           <Grid>
@@ -171,7 +202,7 @@ export const PrinterList = () => {
       </Box>
       <Box
         className="pagination-container"
-        sx={{ display: "flex", justifyContent: "center", marginTop: 2 }}
+        sx={{ display: "flex", justifyContent: "center", marginTop: 5 }}
       >
         <Pagination
           page={page + 1}
