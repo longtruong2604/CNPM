@@ -2,42 +2,36 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import { Box, Toolbar, Typography } from "@mui/material";
-import { Route, Routes } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
-import MenuBar from "./components/MenuBar";
-import Home from "./pages/Home/Home";
+import RootLayout from "./layouts/RootLayout";
 import { PrinterList } from "./pages/PrinterList/PrinterList";
-import Footer from "./components/Footer";
+import Home from "./pages/LandingPage/LandingPage";
+import FuncSelect from "./pages/Home/FuncSelect";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/app",
+    element: <RootLayout />,
+    children: [
+      {
+        path: "/app/",
+        element: <FuncSelect />,
+      },
+      {
+        path: "/app/printer-list",
+        element: <PrinterList />,
+      },
+    ],
+  },
+]);
 
 function App() {
-  return (
-    <Routes>
-      <Route
-        path="/printerList"
-        element={
-          <Box
-            sx={{
-              background: 'url("./backGround.png") fixed center',
-              backgroundSize: "100% 100%",
-              minHeight: "100vh",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-            }}
-          >
-            <Box sx={{ height: "100%" }}>
-              <MenuBar>
-                <PrinterList />
-              </MenuBar>
-            </Box>
-            <Footer />
-          </Box>
-        }
-      />
-      <Route path="/" element={<Home />} />
-    </Routes>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

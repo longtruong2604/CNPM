@@ -4,7 +4,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-export default function BasicSelect({ value, items, handleFilter, id }) {
+export default function FilterSelect({ value, items, handleFilter, id }) {
   const handleChange = (event) => {
     handleFilter.setContent((prev) => ({
       ...prev,

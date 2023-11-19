@@ -5,7 +5,11 @@ import {
   Box,
   Chip,
   Divider,
+  FormControl,
+  InputLabel,
+  MenuItem,
   Pagination,
+  Select,
   Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
@@ -15,7 +19,7 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import { green } from "@mui/material/colors";
 import { PrinterListRow } from "../../components/PrinterListRow";
 import { SearchBar } from "../../components/SearchBar";
-import BasicSelect from "../../components/BasicSelect";
+import FilterSelect from "../../components/FilterSelect";
 import usePagination from "../../hooks/usePagination";
 import { MOCK_DATA } from "./MOCK_DATA";
 
@@ -33,9 +37,13 @@ export const PrinterList = () => {
     building: "",
     printerStatus: "",
   });
+  const [rowNum, setRowNum] = React.useState(5);
 
   const [filteredData, setFilteredData] = useState(MOCK_DATA);
-  const { data, page, totalPages, setPage } = usePagination(filteredData);
+  const { data, page, totalPages, setPage } = usePagination(
+    filteredData,
+    rowNum
+  );
 
   useEffect(() => {
     setFilteredData(
@@ -114,15 +122,15 @@ export const PrinterList = () => {
       >
         <Grid container>
           <Grid>
-            <BasicSelect
+            <FilterSelect
               id={"venue"}
               value={"Cơ sở"}
               handleFilter={{ content: content.venue, setContent }}
               items={[...new Set(MOCK_DATA.map((item) => item.venue))]}
-            ></BasicSelect>
+            ></FilterSelect>
           </Grid>
           <Grid>
-            <BasicSelect
+            <FilterSelect
               id={"building"}
               value={"Tòa"}
               handleFilter={{ content: content.building, setContent }}
@@ -157,10 +165,10 @@ export const PrinterList = () => {
                       ),
                     ]
               }
-            ></BasicSelect>
+            ></FilterSelect>
           </Grid>
           <Grid>
-            <BasicSelect
+            <FilterSelect
               id={"printerStatus"}
               value={"Tình trạng"}
               handleFilter={{
@@ -168,7 +176,7 @@ export const PrinterList = () => {
                 setContent,
               }}
               items={[...new Set(MOCK_DATA.map((item) => item.printerStatus))]}
-            ></BasicSelect>
+            ></FilterSelect>
           </Grid>
         </Grid>
         <SearchBar handleSearch={{ search, setSearch }}></SearchBar>
@@ -202,17 +210,47 @@ export const PrinterList = () => {
       </Box>
       <Box
         className="pagination-container"
-        sx={{ display: "flex", justifyContent: "center", marginTop: 5 }}
+        sx={{
+          display: "flex",
+          marginTop: 3,
+          justifyContent: "center",
+          // flexWrap: "wrap",
+        }}
       >
-        <Pagination
-          page={page + 1}
-          count={totalPages}
-          onChange={(event, value) => {
-            setPage(value - 1);
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
-          variant="outlined"
-          color="primary"
-        />
+        >
+          <Pagination
+            page={page + 1}
+            count={totalPages}
+            onChange={(event, value) => {
+              setPage(value - 1);
+            }}
+            variant="outlined"
+            color="primary"
+          />
+        </Box>
+        <Box sx={{ width: "70px" }}>
+          <FormControl variant="standard" sx={{ width: "100%" }}>
+            <InputLabel id="demo-simple-select-label">No. of rows</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={rowNum}
+              label="Age"
+              onChange={(e) => setRowNum(e.target.value)}
+            >
+              <MenuItem value={5}>5</MenuItem>
+              <MenuItem value={10}>10</MenuItem>
+              <MenuItem value={25}>25</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
       </Box>
     </Box>
   );
