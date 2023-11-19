@@ -1,17 +1,15 @@
-
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import '../style.css';
-
+import MenuIcon from "@mui/icons-material/Menu";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import IconButton from "@mui/material/IconButton";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import PropTypes from "prop-types";
+import * as React from "react";
+import "./Home.css";
+import Footer from "../../components/Footer";
 
 function Home(props) {
   const { window } = props;
@@ -21,20 +19,20 @@ function Home(props) {
     setMobileOpen((prevState) => !prevState);
   };
 
-
-  const container = window !== undefined ? () => window().document.body : undefined;
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <CssBaseline />
       <AppBar component="nav">
-        <Toolbar sx={{ backgroundColor: '#023556' }}>
+        <Toolbar sx={{ backgroundColor: "#023556" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ mr: 2, display: { sm: "none" } }}
           >
             <MenuIcon />
           </IconButton>
@@ -49,24 +47,24 @@ function Home(props) {
             />
           </IconButton>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
             <Button>
-              <IconButton sx={{ color: 'white', fontSize: '18px' }}>
+              <IconButton sx={{ color: "white", fontSize: "18px" }}>
                 | Đăng nhập
               </IconButton>
             </Button>
           </Box>
         </Toolbar>
-        <Toolbar sx={{ backgroundColor: '#fff', marginTop: 'auto' }}>
+        <Toolbar sx={{ backgroundColor: "#fff", marginTop: "auto" }}>
           <Button>
-            <IconButton sx={{ color: '#000', fontSize: '18px' }}>
+            <IconButton sx={{ color: "#000", fontSize: "18px" }}>
               TRANG CHỦ
             </IconButton>
           </Button>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
             <Button>
-              <IconButton sx={{ color: '#000', fontSize: '18px' }}>
+              <IconButton sx={{ color: "#000", fontSize: "18px" }}>
                 NGÔN NGỮ
               </IconButton>
             </Button>
@@ -94,25 +92,26 @@ function Home(props) {
         </Toolbar>
       </AppBar>
 
-      <Box component="main" sx={{  flexGrow: 1 }} className="image-container">
+      <Box component="main" sx={{ flexGrow: 1 }} className="image-container">
         <Toolbar />
         <img
           alt="logo_bk"
           src="/bk_background.png"
           style={{
-            marginTop: '3%',
-            width: '100%',
-            height: '100vh',
+            marginTop: "3%",
+            width: "100%",
+            height: "100vh",
           }}
         />
-        <Typography sx={{ fontSize: '70px', fontWeight: '700' }} className="title">
+        <Typography
+          sx={{ fontSize: "70px", fontWeight: "700" }}
+          className="title"
+        >
           DỊCH VỤ IN ẤN <br /> BKPrint
         </Typography>
       </Box>
 
-      <Toolbar sx={{ backgroundColor: '#023556', flexShrink: 0, marginTop: 'auto', color:'#fff', fontSize: '16px' }}>
-        Copyright@2023.Nhóm-1 L02 Trường Đại học Bách Khoa TP.HCM
-      </Toolbar>
+      <Footer />
     </Box>
   );
 }

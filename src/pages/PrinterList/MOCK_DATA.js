@@ -45,7 +45,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 2,
     printerStatus: "Bận",
-    building: "H3",
+    building: "A3",
   },
   {
     ID: "890N3D",
@@ -53,7 +53,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 4,
     printerStatus: "Đang bảo trì",
-    building: "H6",
+    building: "A1",
   },
   {
     ID: "M3T5AO",
@@ -61,7 +61,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 1,
     printerStatus: "Bận",
-    building: "H2",
+    building: "A3",
   },
   {
     ID: "FX91O3",
@@ -69,7 +69,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 4,
     printerStatus: "Bận",
-    building: "H2",
+    building: "C2",
   },
   {
     ID: "ZLH6DR",
@@ -77,7 +77,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 1,
     printerStatus: "Bận",
-    building: "H3",
+    building: "C6",
   },
   {
     ID: "2XU4I0",
@@ -117,7 +117,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 6,
     printerStatus: "Rảnh",
-    building: "H1",
+    building: "C5",
   },
   {
     ID: "45BOHO",
@@ -125,7 +125,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 1,
     printerStatus: "Rảnh",
-    building: "H2",
+    building: "B5",
   },
   {
     ID: "92F67S",
@@ -149,7 +149,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 4,
     printerStatus: "Đang bảo trì",
-    building: "H2",
+    building: "B2",
   },
   {
     ID: "RNKC5R",
@@ -165,7 +165,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 7,
     printerStatus: "Đang bảo trì",
-    building: "H1",
+    building: "B1",
   },
   {
     ID: "4JQ8WC",
@@ -173,7 +173,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 5,
     printerStatus: "Bận",
-    building: "H3",
+    building: "B3",
   },
   {
     ID: "2MUIBL",
@@ -181,7 +181,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 6,
     printerStatus: "Đang bảo trì",
-    building: "H2",
+    building: "C3",
   },
   {
     ID: "0UC4E9",
@@ -197,7 +197,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 1,
     printerStatus: "Bận",
-    building: "H3",
+    building: "A3",
   },
   {
     ID: "N41ZC1",
@@ -205,7 +205,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 5,
     printerStatus: "Đang bảo trì",
-    building: "H2",
+    building: "A5",
   },
   {
     ID: "3JAZ18",
@@ -213,7 +213,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 1,
     printerStatus: "Đang bảo trì",
-    building: "H2",
+    building: "A2",
   },
   {
     ID: "H11BN7",
@@ -221,7 +221,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 1,
     printerStatus: "Rảnh",
-    building: "H2",
+    building: "C2",
   },
   {
     ID: "X5G0T2",
@@ -229,7 +229,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 5,
     printerStatus: "Ít bận",
-    building: "H1",
+    building: "C1",
   },
   {
     ID: "1OPZ46",
@@ -261,7 +261,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 6,
     printerStatus: "Rảnh",
-    building: "H2",
+    building: "B7",
   },
   {
     ID: "52OJT6",
@@ -293,7 +293,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 2,
     printerStatus: "Ít bận",
-    building: "H3",
+    building: "B8",
   },
   {
     ID: "3E5A97",
@@ -301,7 +301,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 7,
     printerStatus: "Đang bảo trì",
-    building: "H2",
+    building: "A1",
   },
   {
     ID: "85D68J",
@@ -317,7 +317,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 7,
     printerStatus: "Đang bảo trì",
-    building: "H6",
+    building: "B3",
   },
   {
     ID: "MKJ05W",
@@ -341,7 +341,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 1,
     printerStatus: "Rảnh",
-    building: "H1",
+    building: "C6",
   },
   {
     ID: "014551",
@@ -362,10 +362,10 @@ export const MOCK_DATA = [
   {
     ID: "771276",
     printerName: "Epson WorkForce WF-3640",
-    venue: 2,
+    venue: 1,
     floor: 3,
     printerStatus: "Đang bảo trì",
-    building: "H2",
+    building: "C6",
   },
   {
     ID: "1YZ79K",
@@ -373,15 +373,15 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 4,
     printerStatus: "Bận",
-    building: "H1",
+    building: "C5",
   },
   {
     ID: "V09PA9",
     printerName: "Xerox Phaser 6510",
-    venue: 2,
+    venue: 1,
     floor: 6,
     printerStatus: "Bận",
-    building: "H6",
+    building: "B1",
   },
   {
     ID: "92ICHG",
@@ -389,7 +389,7 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 6,
     printerStatus: "Rảnh",
-    building: "H1",
+    building: "B2",
   },
   {
     ID: "P1JX36",
@@ -397,6 +397,6 @@ export const MOCK_DATA = [
     venue: 1,
     floor: 1,
     printerStatus: "Ít bận",
-    building: "H1",
+    building: "A4",
   },
 ];
