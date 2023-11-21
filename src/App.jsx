@@ -8,7 +8,8 @@ import RootLayout from "./layouts/RootLayout";
 import { PrinterList } from "./pages/PrinterList/PrinterList";
 import Home from "./pages/LandingPage/LandingPage";
 import FuncSelect from "./pages/Home/FuncSelect";
-
+import LoginAsStudent from "./pages/Login/LoginAsStudent";
+import LoginPermission from "./pages/Login/LoginPermission";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,6 +28,14 @@ const router = createBrowserRouter([
         element: <PrinterList />,
       },
     ],
+  },
+  {
+    path: "studentlogin",
+    element: <LoginAsStudent />,
+  },
+  {
+    path: "adminlogin",
+    element: <LoginPermission />,
   },
 ]);
 
