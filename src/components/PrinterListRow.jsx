@@ -36,6 +36,7 @@ export const PrinterListRow = ({
   return (
     <Grid
       container
+      columns={11}
       sx={{
         backgroundColor: "#E9F3F9",
         opacity: 0.82,
@@ -62,7 +63,7 @@ export const PrinterListRow = ({
       <Grid sx={item()} lg={1}>
         {floor}
       </Grid>
-      <Grid sx={item({ color: statusColor(printerStatus) })} lg={3}>
+      <Grid sx={item({ color: statusColor(printerStatus) })} lg={2}>
         {printerStatus}
       </Grid>
       <Grid sx={item()} lg={2}>
