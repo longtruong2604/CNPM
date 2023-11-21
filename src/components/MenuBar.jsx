@@ -223,7 +223,7 @@ export default function MenuBar(props) {
             <React.Fragment key={item.text}>
               <ListItem disablePadding sx={{ display: "block" }}>
                 <ListItemButton
-                  to={item.to}
+                  onClick={() => navigate(item.to)}
                   sx={{
                     minHeight: 60,
                     justifyContent: open ? "initial" : "center",
