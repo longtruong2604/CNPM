@@ -6,14 +6,14 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
 import RootLayout from "./layouts/RootLayout";
 import { PrinterList } from "./pages/PrinterList/PrinterList";
-import Home from "./pages/LandingPage/LandingPage";
+import Landing from "./pages/Landing/Landing";
 import FuncSelect from "./pages/Home/FuncSelect";
-import LoginAsStudent from "./pages/Login/LoginAsStudent"
-import LoginPermission from "./pages/Login/LoginPermission"
+import LoginAsStudent from "./pages/Login/LoginAsStudent";
+import LoginPermission from "./pages/Login/LoginPermission";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <Landing />,
   },
   {
     path: "/app",
@@ -30,12 +30,12 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path:"studentlogin" ,
-    element:<LoginAsStudent />
+    path: "studentlogin",
+    element: <LoginAsStudent />,
   },
   {
-    path:"adminlogin" ,
-    element:<LoginPermission />
+    path: "adminlogin",
+    element: <LoginPermission />,
   },
 ]);
 

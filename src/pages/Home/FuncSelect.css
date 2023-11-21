@@ -2,9 +2,14 @@ figure {
   display: inline-block;
 }
 
+figcaption {
+  font-size: 25px;
+  font-weight: 500;
+}
+
 .logo {
-  height: 10em;
-  padding: 1.5em;
+  height: 15em;
+  padding: 1.5em 1.5em 0.5em 1.5em;
   will-change: filter;
   transition: filter 300ms;
   cursor: pointer;

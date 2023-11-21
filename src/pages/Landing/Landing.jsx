@@ -8,22 +8,23 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
 import * as React from "react";
-import "./LandingPage.css";
+import "./Landing.css";
 import Footer from "../../components/Footer";
-import { Modal } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Modal } from "@mui/material";
+import { Link } from "react-router-dom";
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: 'background.paper',
+  bgcolor: "background.paper",
 
   boxShadow: 24,
   p: 4,
 };
-function LandingPage(props) {
+
+function Landing(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -33,7 +34,6 @@ function LandingPage(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
@@ -60,9 +60,9 @@ function LandingPage(props) {
             />
           </IconButton>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
             <Button onClick={handleOpen}>
-              <IconButton sx={{ color: 'white', fontSize: '18px' }}>
+              <IconButton sx={{ color: "white", fontSize: "18px" }}>
                 | Đăng nhập
               </IconButton>
             </Button>
@@ -72,29 +72,34 @@ function LandingPage(props) {
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
             >
-              <Box sx={style} >
-                <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <Box sx={style}>
+                <div
+                  style={{
+                    textAlign: "center",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
                   <img src="./logoBK1.png" alt="" />
                   <hr />
-                  <Typography variant='h5'>
-                    Đăng nhập bằng:
-                  </Typography>
-                  <Link to="/studentlogin" style={{ textDecoration: 'none' }}>
-                    <Button variant="outlined"
-                      style={{ marginTop: '10px', width: '200px' }}
+                  <Typography variant="h5">Đăng nhập bằng:</Typography>
+                  <Link to="/studentlogin" style={{ textDecoration: "none" }}>
+                    <Button
+                      variant="outlined"
+                      style={{ marginTop: "10px", width: "200px" }}
                     >
                       Sinh viên của HCMUT
                     </Button>
                   </Link>
 
                   <br />
-                  <Link to="/adminlogin" style={{ textDecoration: 'none' }}>
-                  <Button variant="outlined" style={{ width: '200px' }}>
-                    Quản trị viên
-                  </Button>
+                  <Link to="/adminlogin" style={{ textDecoration: "none" }}>
+                    <Button variant="outlined" style={{ width: "200px" }}>
+                      Quản trị viên
+                    </Button>
                   </Link>
                 </div>
-
               </Box>
             </Modal>
           </Box>
@@ -160,8 +165,8 @@ function LandingPage(props) {
   );
 }
 
-LandingPage.propTypes = {
+Landing.propTypes = {
   window: PropTypes.func,
 };
 
-export default LandingPage;
+export default Landing;

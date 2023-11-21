@@ -22,6 +22,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { styled, useTheme } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 import * as React from "react";
 
 const drawerWidth = 240;
@@ -94,6 +95,7 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function MenuBar(props) {
+  const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -152,7 +154,7 @@ export default function MenuBar(props) {
             </IconButton>
             <IconButton>
               <Typography variant="h6" color="white">
-                Trương Thành Long
+                Nguyễn Văn A
               </Typography>
             </IconButton>
             <IconButton>
