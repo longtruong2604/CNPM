@@ -1,25 +1,19 @@
 import React, { useEffect, useState } from "react";
 // import Container from "@mui/material/Container";
 import {
-  Avatar,
   Box,
-  Chip,
-  Divider,
   FormControl,
   InputLabel,
   MenuItem,
   Pagination,
   Select,
-  Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 
-import CircleIcon from "@mui/icons-material/Circle";
-import DescriptionIcon from "@mui/icons-material/Description";
-import { green } from "@mui/material/colors";
+import FilterSelect from "../../components/FilterSelect";
 import { PrinterListRow } from "../../components/PrinterListRow";
 import { SearchBar } from "../../components/SearchBar";
-import FilterSelect from "../../components/FilterSelect";
+import User from "../../components/User";
 import usePagination from "../../hooks/usePagination";
 import { MOCK_DATA } from "./MOCK_DATA";
 
@@ -66,53 +60,8 @@ export const PrinterList = () => {
 
   return (
     <Box className="content" margin={2}>
-      <Grid container spacing={1} className="user-info-container" mb={2}>
-        <Grid lg="auto" sx={{}}>
-          <Avatar
-            sx={{
-              height: "100%",
-              width: 77.48,
-              fontSize: 30,
-              backgroundColor: "#E9F3F9",
-              color: "#023556",
-            }}
-          >
-            H
-          </Avatar>
-        </Grid>
-        <Grid lg="auto">
-          <Box>
-            <Typography variant="h5" sx={{ fontWeight: 500 }}>
-              Trương Thành Long
-            </Typography>
-          </Box>
-          <Box>
-            <Typography variant="body2">
-              <CircleIcon
-                sx={{ fontSize: 10, color: green[500], marginRight: 1 }}
-              />
-              Khoa khoa học và kỹ thuật máy tính
-            </Typography>
-          </Box>
-          <Box>
-            <Chip
-              size="small"
-              icon={<DescriptionIcon sx={{ height: 17 }} />}
-              label="100"
-              sx={{
-                fontWeight: 700,
-                backgroundColor: "#E9F3F9",
-                opacity: 0.82,
-              }}
-            />
-          </Box>
-        </Grid>
-      </Grid>
-      <Divider
-        variant="middle"
-        color="black"
-        sx={{ height: 2.5, borderRadius: 2 }}
-      />
+      <User size="small" />
+
       <Grid
         container
         justifyContent="space-between"
@@ -214,30 +163,11 @@ export const PrinterList = () => {
           display: "flex",
           marginTop: 3,
           justifyContent: "center",
-          // flexWrap: "wrap",
         }}
       >
-        <Box
-          sx={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Pagination
-            page={page + 1}
-            count={totalPages}
-            onChange={(event, value) => {
-              setPage(value - 1);
-            }}
-            variant="outlined"
-            color="primary"
-          />
-        </Box>
-        <Box sx={{ width: "70px" }}>
+        <Box sx={{ width: "65px" }}>
           <FormControl variant="standard" sx={{ width: "100%" }}>
-            <InputLabel id="demo-simple-select-label">No. of rows</InputLabel>
+            <InputLabel id="demo-simple-select-label">Rows/page</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -250,6 +180,25 @@ export const PrinterList = () => {
               <MenuItem value={25}>25</MenuItem>
             </Select>
           </FormControl>
+        </Box>
+        <Box
+          sx={{
+            // width: "100%",
+            display: "flex",
+            alignItems: "end",
+            paddingLeft: "20px",
+            // justifyContent: "center",
+          }}
+        >
+          <Pagination
+            page={page + 1}
+            count={totalPages}
+            onChange={(event, value) => {
+              setPage(value - 1);
+            }}
+            variant="outlined"
+            color="primary"
+          />
         </Box>
       </Box>
     </Box>

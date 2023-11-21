@@ -8,7 +8,7 @@ function FuncSelect() {
   return (
     <>
       <main style={{ height: "100%" }}>
-        <User />
+        <User size="large" />
         <Box
           sx={{
             display: "flex",
@@ -18,15 +18,6 @@ function FuncSelect() {
             height: "100%",
           }}
         >
-          <figure>
-            <img
-              src="/printer.png"
-              className="logo"
-              alt="Printer"
-              target="_blank"
-            />
-            <figcaption>Chọn máy in</figcaption>
-          </figure>
           <figure>
             <img
               onClick={() => setbuttonPopup(true)}

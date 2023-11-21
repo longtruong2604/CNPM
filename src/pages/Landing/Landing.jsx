@@ -8,7 +8,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
 import * as React from "react";
-import "./LandingPage.css";
+import "./Landing.css";
 import Footer from "../../components/Footer";
 import { Modal } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -23,7 +23,8 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-function LandingPage(props) {
+
+function Landing(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -164,8 +165,8 @@ function LandingPage(props) {
   );
 }
 
-LandingPage.propTypes = {
+Landing.propTypes = {
   window: PropTypes.func,
 };
 
-export default LandingPage;
+export default Landing;
