@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from "react";
-// import Container from "@mui/material/Container";
 import {
   Box,
   FormControl,
@@ -9,7 +7,9 @@ import {
   Select,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
+import React, { useEffect, useState } from "react";
 
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import FilterSelect from "../../components/FilterSelect";
 import { PrinterListRow } from "../../components/PrinterListRow";
 import { SearchBar } from "../../components/SearchBar";
@@ -34,6 +34,9 @@ export const PrinterList = () => {
   const [rowNum, setRowNum] = React.useState(5);
 
   const [filteredData, setFilteredData] = useState(MOCK_DATA);
+
+  const [sort, setSort] = useState({ order: "DSC", col: "" });
+
   const { data, page, totalPages, setPage } = usePagination(
     filteredData,
     rowNum
@@ -57,6 +60,21 @@ export const PrinterList = () => {
 
     setPage(0);
   }, [search, content]);
+
+  const handleSort = (name) => {
+    if (sort.order === "ASC") {
+      setFilteredData(
+        [...filteredData].sort((a, b) => (a[name] > b[name] ? 1 : -1))
+      );
+      setSort({ col: name, order: "DSC" });
+    }
+    if (sort.order === "DSC") {
+      setFilteredData(
+        [...filteredData].sort((a, b) => (a[name] < b[name] ? 1 : -1))
+      );
+      setSort({ col: name, order: "ASC" });
+    }
+  };
 
   return (
     <Box className="content" margin={2}>
@@ -132,25 +150,62 @@ export const PrinterList = () => {
       </Grid>
       <Box className="table-container">
         <Box>
-          <Grid container>
-            <Grid sx={colHeader} lg={2}>
-              ID
-            </Grid>
-            <Grid sx={colHeader} lg={2}>
-              Tên
-            </Grid>
-            <Grid sx={colHeader} lg={1}>
-              Cơ sở
-            </Grid>
-            <Grid sx={colHeader} lg={1}>
-              Tòa
-            </Grid>
-            <Grid sx={colHeader} lg={1}>
-              Tầng
-            </Grid>
-            <Grid sx={colHeader} lg={3}>
-              Tình trạng
-            </Grid>
+          <Grid container columns={11}>
+            {[
+              {
+                gridSize: 2,
+                headerName: "ID",
+                colName: "ID",
+              },
+              {
+                gridSize: 2,
+                headerName: "Tên",
+                colName: "printerName",
+              },
+              {
+                gridSize: 1,
+                headerName: "Cơ sở",
+                colName: "venue",
+              },
+              {
+                gridSize: 1,
+                headerName: "Tòa",
+                colName: "building",
+              },
+              {
+                gridSize: 1,
+                headerName: "Tầng",
+                colName: "floor",
+              },
+              {
+                gridSize: 2,
+                headerName: "Tình trạng",
+                colName: "printerStatus",
+              },
+            ].map((item) => (
+              <Grid
+                sx={colHeader}
+                lg={item.gridSize}
+                display={"flex"}
+                alignItems={"center"}
+                justifyContent={"center"}
+              >
+                <KeyboardArrowRightIcon
+                  sx={{
+                    fontSize: "23px",
+                    transform:
+                      sort.col === item.colName
+                        ? sort.order === "ASC"
+                          ? "rotate(90deg)"
+                          : "rotate(270deg)"
+                        : "",
+                    transition: "transform 150ms ease",
+                  }}
+                  onClick={() => handleSort(item.colName)}
+                />
+                {item.headerName}
+              </Grid>
+            ))}
           </Grid>
         </Box>
         {data.map((item) => {
