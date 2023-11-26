@@ -10,6 +10,7 @@ import Landing from "./pages/Landing/Landing";
 import FuncSelect from "./pages/Home/FuncSelect";
 import LoginAsStudent from "./pages/Login/LoginAsStudent";
 import LoginPermission from "./pages/Login/LoginPermission";
+import FileList from "./pages/FileList/FileList";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/app/printer-list",
         element: <PrinterList />,
+      },
+      {
+        path: "/app/file-list",
+        element: <FileList />,
       },
     ],
   },
