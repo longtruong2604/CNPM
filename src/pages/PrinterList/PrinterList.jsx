@@ -38,6 +38,7 @@ export const PrinterList = () => {
 
   const [sort, setSort] = useState({ order: "DSC", col: "ID" });
 
+
   const { data, page, totalPages, setPage } = usePagination(
     filteredData,
     rowNum
@@ -83,6 +84,7 @@ export const PrinterList = () => {
       );
       setSort({ col: name, order: "DSC" });
     }
+
   };
 
   return (
@@ -207,6 +209,7 @@ export const PrinterList = () => {
                         ? sort.order === "ASC"
                           ? "rotate(-90deg)"
                           : "rotate(90deg)"
+
                         : "",
                     transition: "transform 150ms ease",
                   }}
