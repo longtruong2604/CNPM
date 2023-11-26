@@ -25,7 +25,7 @@ When logging in as students, you are navigated to this page
 
 When logging in as admins, you are navigated to this page
 
-### /app/
+### /app
 
 After logging in successfully, you will be navigated to this page, which is our app Home page.
 
