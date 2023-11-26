@@ -3,9 +3,6 @@
 ## Getting started
 ### Prerequisite
 * **npm**
-  ```sh
-  npm install npm@latest -g
-  ```
 ### Clone this repo
 ```
 git clone https://github.com/longtruong2604/CNPM-Project.git
