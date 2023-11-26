@@ -1,3 +1,4 @@
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import {
   Box,
   Pagination,
@@ -6,11 +7,13 @@ import {
   Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import dayjs from "dayjs";
 import React, { useEffect, useState } from "react";
-
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { FileListRow } from "../../components/FileListRow";
 import FilterSelect from "../../components/FilterSelect";
-import { PrinterListRow } from "../../components/PrinterListRow";
 import { SearchBar } from "../../components/SearchBar";
 import User from "../../components/User";
 import usePagination from "../../hooks/usePagination";
@@ -23,20 +26,37 @@ const colHeader = () => ({
   color: "#023556",
 });
 
-export const PrinterList = () => {
+export default function FileList() {
+  const [cleared, setCleared] = React.useState({ start: false, end: false });
+  React.useEffect(() => {
+    if (cleared.end) {
+      const timeout = setTimeout(() => {
+        setCleared({ ...cleared.prev, end: false });
+      }, 1500);
+      return () => clearTimeout(timeout);
+    }
+    if (cleared.start) {
+      const timeout = setTimeout(() => {
+        setCleared({ ...cleared.prev, start: false });
+      }, 1500);
+      return () => clearTimeout(timeout);
+    }
+    return () => {};
+  }, [cleared]);
   const [search, setSearch] = useState("");
   const [content, setContent] = React.useState({
-    venue: "",
-    building: "",
-    printerStatus: "",
+    startDate: "",
+    endDate: "",
+    fileType: "",
+    fileStatus: "",
   });
   const [rowNum, setRowNum] = React.useState(5);
 
   const [filteredData, setFilteredData] = useState(
-    [...MOCK_DATA].sort((a, b) => a.ID.localeCompare(b.ID))
+    [...MOCK_DATA].sort((a, b) => (a.uploadDate < b.uploadDate ? 1 : -1))
   );
 
-  const [sort, setSort] = useState({ order: "DSC", col: "ID" });
+  const [sort, setSort] = useState({ order: "ASC", col: "uploadDate" });
 
   const { data, page, totalPages, setPage } = usePagination(
     filteredData,
@@ -49,15 +69,16 @@ export const PrinterList = () => {
         .filter((item) => {
           return search.toLowerCase() === ""
             ? item
-            : item.printerName.toLowerCase().includes(search.toLowerCase()) ||
-                item.ID.toLowerCase().includes(search.toLowerCase());
+            : item.printerID.toLowerCase().includes(search.toLowerCase()) ||
+                item.id.toLowerCase().includes(search.toLowerCase()) ||
+                item.fileName.toLowerCase().includes(search.toLowerCase());
         })
         .filter(
           (item) =>
-            (item.venue === content.venue || !content.venue) &&
-            (item.building === content.building || !content.building) &&
-            (item.printerStatus === content.printerStatus ||
-              !content.printerStatus)
+            (item.uploadDate >= content.startDate || !content.startDate) &&
+            (item.uploadDate <= content.endDate || !content.endDate) &&
+            (item.fileType === content.fileType || !content.fileType) &&
+            (item.fileStatus === content.fileStatus || !content.fileStatus)
         )
     );
 
@@ -84,9 +105,8 @@ export const PrinterList = () => {
       setSort({ col: name, order: "DSC" });
     }
   };
-
   return (
-    <Box className="content" margin={2}>
+    <Box className="content" padding={2}>
       <User size="small" />
 
       <Grid
@@ -97,47 +117,94 @@ export const PrinterList = () => {
         mb={1}
       >
         <Grid container>
-          <Grid>
-            <FilterSelect
-              id={"venue"}
-              value={"Cơ sở"}
-              handleFilter={{ content: content.venue, setContent }}
-              items={[...new Set(MOCK_DATA.map((item) => item.venue))]}
-            ></FilterSelect>
+          <Grid padding={1}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker
+                label="Ngày bắt đầu"
+                format="DD/MM/YYYY"
+                slotProps={{
+                  textField: { size: "small" },
+                  field: {
+                    clearable: true,
+                    onClear: () =>
+                      setCleared((prev) => ({ ...prev, start: true })),
+                  },
+                }}
+                sx={{
+                  backgroundColor: "#E9F3F9",
+                  width: "12rem",
+                }}
+                onChange={(e) => {
+                  setContent((prev) => ({
+                    ...prev,
+                    startDate: e == null ? "" : dayjs(e).format("YYYY-MM-DD"),
+                  }));
+                  console.log(content);
+                }}
+              />
+            </LocalizationProvider>
+          </Grid>
+          <Grid padding={1}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker
+                label="Ngày kết thúc"
+                format="DD/MM/YYYY"
+                slotProps={{
+                  textField: { size: "small" },
+                  field: {
+                    clearable: true,
+                    onClear: () => {
+                      setCleared((prev) => ({ ...prev, end: true }));
+                    },
+                  },
+                }}
+                sx={{
+                  backgroundColor: "#E9F3F9",
+                  width: "12rem",
+                }}
+                onChange={(e) => {
+                  setContent((prev) => ({
+                    ...prev,
+                    endDate: e == null ? "" : dayjs(e).format("YYYY-MM-DD"),
+                  }));
+                  console.log(content);
+                }}
+              />
+            </LocalizationProvider>
           </Grid>
           <Grid>
             <FilterSelect
-              id={"building"}
-              value={"Tòa"}
-              handleFilter={{ content: content.building, setContent }}
+              id={"fileType"}
+              value={"Định dạng"}
+              handleFilter={{ content: content.fileType, setContent }}
               items={
                 content.venue === ""
                   ? [
                       ...new Set(
                         MOCK_DATA.sort(function (a, b) {
-                          if (a.building > b.building) {
+                          if (a.fileType > b.fileType) {
                             return 1;
                           }
-                          if (b.building > a.building) {
+                          if (b.fileType > a.fileType) {
                             return -1;
                           }
                           return 0;
-                        }).map((item) => item.building)
+                        }).map((item) => item.fileType)
                       ),
                     ]
                   : [
                       ...new Set(
                         MOCK_DATA.filter((item) => item.venue === content.venue)
                           .sort(function (a, b) {
-                            if (a.building > b.building) {
+                            if (a.fileType > b.fileType) {
                               return 1;
                             }
-                            if (b.building > a.building) {
+                            if (b.fileType > a.fileType) {
                               return -1;
                             }
                             return 0;
                           })
-                          .map((item) => item.building)
+                          .map((item) => item.fileType)
                       ),
                     ]
               }
@@ -145,13 +212,13 @@ export const PrinterList = () => {
           </Grid>
           <Grid>
             <FilterSelect
-              id={"printerStatus"}
+              id={"fileStatus"}
               value={"Tình trạng"}
               handleFilter={{
-                content: content.printerStatus,
+                content: content.fileStatus,
                 setContent,
               }}
-              items={[...new Set(MOCK_DATA.map((item) => item.printerStatus))]}
+              items={[...new Set(MOCK_DATA.map((item) => item.fileStatus))]}
             ></FilterSelect>
           </Grid>
         </Grid>
@@ -159,37 +226,42 @@ export const PrinterList = () => {
       </Grid>
       <Box className="table-container">
         <Box>
-          <Grid container columns={11}>
+          <Grid container columns={14}>
             {[
               {
                 gridSize: 2,
+                headerName: "Ngày Upload",
+                colName: "uploadDate",
+              },
+              {
+                gridSize: 2,
                 headerName: "ID",
-                colName: "ID",
+                colName: "id",
               },
               {
                 gridSize: 2,
                 headerName: "Tên",
-                colName: "printerName",
+                colName: "fileName",
               },
               {
-                gridSize: 1,
-                headerName: "Cơ sở",
-                colName: "venue",
+                gridSize: 2,
+                headerName: "Định dạng",
+                colName: "fileType",
               },
               {
-                gridSize: 1,
-                headerName: "Tòa",
-                colName: "building",
+                gridSize: 2,
+                headerName: "Kích thước",
+                colName: "fileSize",
               },
               {
-                gridSize: 1,
-                headerName: "Tầng",
-                colName: "floor",
+                gridSize: 2,
+                headerName: "ID máy in",
+                colName: "printerID",
               },
               {
                 gridSize: 2,
                 headerName: "Tình trạng",
-                colName: "printerStatus",
+                colName: "fileStatus",
               },
             ].map((item) => (
               <Grid
@@ -218,7 +290,7 @@ export const PrinterList = () => {
           </Grid>
         </Box>
         {data.map((item) => {
-          return <PrinterListRow key={item.ID} {...item}></PrinterListRow>;
+          return <FileListRow key={item.ID} {...item}></FileListRow>;
         })}
       </Box>
       <Box
@@ -271,4 +343,4 @@ export const PrinterList = () => {
       </Box>
     </Box>
   );
-};
+}
