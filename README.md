@@ -1,7 +1,3 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -14,57 +10,37 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+## Available routes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### /
 
-### `npm run build`
+This is where you first landed
+![image](https://github.com/longtruong2604/CNPM-Project/assets/51388464/0e5384ba-1dd6-4266-8ea8-d93beee39e9b)
+You then can choose to log in as students or admins
+![image](https://github.com/longtruong2604/CNPM-Project/assets/51388464/150b5583-528d-4f86-88df-fac03105ef86)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### /studentlogin
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+When logging in as students, you are navigated to this page
+![image](https://github.com/longtruong2604/CNPM-Project/assets/51388464/5a1f6945-a1a6-4922-80a8-ca4b8b411b2e)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### /adminlogin
 
-### `npm run eject`
+When logging in as admins, you are navigated to this page
+![image](https://github.com/longtruong2604/CNPM-Project/assets/51388464/02f6782b-a882-4fe2-84b3-b99da9007097)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### /app
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+After logging in successfully, you will be navigated to this page, which is our app Home page.
+![image](https://github.com/longtruong2604/CNPM-Project/assets/51388464/51656663-8762-4d49-abf3-33e3939da12b)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### /app/history
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This page contains a listing of the users printing history. Users can sort this history based on many fields, they also can filter out and search for the infomation they need.
+![image](https://github.com/longtruong2604/CNPM-Project/assets/51388464/433443b2-ae6f-4dd6-9a8e-5fe4e1d47e9f)
 
-## Learn More
+### /app/printer-list
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This page contains infomation about all the printers connected to the system. And similar to the "File Listing" page, users have the ability to filter, sort and search the infomation they want.
+![image](https://github.com/longtruong2604/CNPM-Project/assets/51388464/b49e7e15-5025-44f4-81e7-d1852569acc0)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
