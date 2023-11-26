@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         element: <PrinterList />,
       },
       {
-        path: "/app/file-list",
+        path: "/app/history",
         element: <FileList />,
       },
     ],

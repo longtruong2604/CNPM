@@ -207,7 +207,7 @@ export default function MenuBar(props) {
             {
               text: "Lịch sử",
               icon: <UpdateIcon fontSize="medium" sx={{ color: "white" }} />,
-              to: "/#",
+              to: "/app/history",
             },
             {
               text: "Hỗ trợ",
