@@ -20,6 +20,7 @@ import { useState } from 'react'
 import LoginBar from '../../components/LoginBar'
 import Footer from '../../components/Footer'
 import "./Login.css";
+import { Link } from "react-router-dom";
 
 export default function Login(props) {
     const { window } = props;
@@ -142,9 +143,11 @@ export default function Login(props) {
 
 
                             </Grid>
+                            <Link to="/app" style={{ textDecoration: "none" }}>
                             <Button variant='contained' sx={{ textAlign: 'center', marginTop: '5%' }}>
                                 Đăng nhập
                             </Button>
+                            </Link>
                         </Grid>
                     </Grid>
                 </Grid>
