@@ -53,7 +53,7 @@ function User({ size }) {
               Nguyễn Văn A
             </Typography>
           </Box>
-          <Box>
+          <Box> 
             <Typography variant={variant[size].faculty}>
               <CircleIcon
                 sx={{
