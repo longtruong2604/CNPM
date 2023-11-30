@@ -30,7 +30,7 @@ function FuncSelect() {
           </figure>
           <figure>
             <img src="/cash.png" className="logo" alt="Cash" target="_blank" />
-            <figcaption>Thanh toán</figcaption>
+            <figcaption>Thanh toán (COMING SOON)</figcaption>
           </figure>
         </Box>
       </main>

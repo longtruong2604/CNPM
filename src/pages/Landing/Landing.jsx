@@ -104,7 +104,7 @@ function Landing(props) {
             </Modal>
           </Box>
         </Toolbar>
-        <Toolbar sx={{ backgroundColor: "#fff", marginTop: "auto" }}>
+        {/* <Toolbar sx={{ backgroundColor: "#fff", marginTop: "auto" }}>
           <Button>
             <IconButton sx={{ color: "#000", fontSize: "18px" }}>
               TRANG CHỦ
@@ -138,7 +138,7 @@ function Landing(props) {
               />
             </IconButton>
           </Box>
-        </Toolbar>
+        </Toolbar> */}
       </AppBar>
 
       <Box component="main" sx={{ flexGrow: 1 }} className="image-container">

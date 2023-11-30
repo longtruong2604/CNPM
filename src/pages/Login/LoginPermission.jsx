@@ -126,9 +126,11 @@ export default function Login(props) {
 
 
                                     </Grid>
-                                    <Button variant='outlined' sx={{ textAlign: 'center', marginTop: '5%' }} size="large" startIcon={<LoginIcon color="success" />} >
-                                        Đăng nhập
-                                    </Button>
+                                    <Link to="/app" >
+                                        <Button variant='outlined' sx={{ textAlign: 'center', marginTop: '5%' }} size="large" startIcon={<LoginIcon color="success" />} >
+                                            Đăng nhập
+                                        </Button>
+                                    </Link>
                                 </Grid>
                             </Grid>
                         </Grid>

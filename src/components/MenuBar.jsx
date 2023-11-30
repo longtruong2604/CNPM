@@ -157,7 +157,7 @@ export default function MenuBar(props) {
                 Nguyễn Văn A
               </Typography>
             </IconButton>
-            <IconButton>
+            {/* <IconButton>
               <img
                 alt="logo_bk"
                 src="/vietnam.png"
@@ -176,7 +176,7 @@ export default function MenuBar(props) {
                   height: 28,
                 }}
               />
-            </IconButton>
+            </IconButton> */}
           </Box>
         </Toolbar>
       </AppBar>
@@ -209,11 +209,11 @@ export default function MenuBar(props) {
               icon: <UpdateIcon fontSize="medium" sx={{ color: "white" }} />,
               to: "/app/history",
             },
-            {
-              text: "Hỗ trợ",
-              icon: <BuildIcon fontSize="medium" sx={{ color: "white" }} />,
-              to: "/#",
-            },
+            // {
+            //   text: "Hỗ trợ",
+            //   icon: <BuildIcon fontSize="medium" sx={{ color: "white" }} />,
+            //   to: "/#",
+            // },
             {
               text: "Đăng xuất",
               icon: <LogoutIcon fontSize="medium" sx={{ color: "white" }} />,
