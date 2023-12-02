@@ -6,7 +6,7 @@ import {
   Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import FilterSelect from "../../components/FilterSelect";
@@ -24,6 +24,7 @@ const colHeader = () => ({
 });
 
 export const PrinterList = () => {
+  const checkFirstRender = useRef(true);
   const [search, setSearch] = useState("");
   const [content, setContent] = React.useState({
     venue: "",
@@ -38,28 +39,29 @@ export const PrinterList = () => {
 
   const [sort, setSort] = useState({ order: "DSC", col: "ID" });
 
-
   const { data, page, totalPages, setPage } = usePagination(
     filteredData,
     rowNum
   );
 
   useEffect(() => {
+    if (checkFirstRender.current) {
+      checkFirstRender.current = false;
+      return;
+    }
     setFilteredData(
-      filteredData
-        .filter((item) => {
-          return search.toLowerCase() === ""
-            ? item
-            : item.printerName.toLowerCase().includes(search.toLowerCase()) ||
-                item.ID.toLowerCase().includes(search.toLowerCase());
-        })
-        .filter(
-          (item) =>
-            (item.venue === content.venue || !content.venue) &&
-            (item.building === content.building || !content.building) &&
-            (item.printerStatus === content.printerStatus ||
-              !content.printerStatus)
-        )
+      MOCK_DATA.filter((item) => {
+        return search.toLowerCase() === ""
+          ? item
+          : item.printerName.toLowerCase().includes(search.toLowerCase()) ||
+              item.ID.toLowerCase().includes(search.toLowerCase());
+      }).filter(
+        (item) =>
+          (item.venue === content.venue || !content.venue) &&
+          (item.building === content.building || !content.building) &&
+          (item.printerStatus === content.printerStatus ||
+            !content.printerStatus)
+      )
     );
 
     setPage(0);
@@ -84,7 +86,6 @@ export const PrinterList = () => {
       );
       setSort({ col: name, order: "DSC" });
     }
-
   };
 
   return (
@@ -209,7 +210,6 @@ export const PrinterList = () => {
                         ? sort.order === "ASC"
                           ? "rotate(-90deg)"
                           : "rotate(90deg)"
-
                         : "",
                     transition: "transform 150ms ease",
                   }}

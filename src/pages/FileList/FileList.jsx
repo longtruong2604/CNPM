@@ -18,6 +18,7 @@ import { SearchBar } from "../../components/SearchBar";
 import User from "../../components/User";
 import usePagination from "../../hooks/usePagination";
 import { MOCK_DATA } from "./MOCK_DATA";
+import { useRef } from "react";
 
 const colHeader = () => ({
   textAlign: "center",
@@ -27,6 +28,8 @@ const colHeader = () => ({
 });
 
 export default function FileList() {
+  const checkFirstRender = useRef(true);
+
   const [cleared, setCleared] = React.useState({ start: false, end: false });
   React.useEffect(() => {
     if (cleared.end) {
@@ -64,6 +67,10 @@ export default function FileList() {
   );
 
   useEffect(() => {
+    if (checkFirstRender.current) {
+      checkFirstRender.current = false;
+      return;
+    }
     setFilteredData(
       filteredData
         .filter((item) => {
@@ -81,7 +88,6 @@ export default function FileList() {
             (item.fileStatus === content.fileStatus || !content.fileStatus)
         )
     );
-
     setPage(0);
   }, [search, content]);
 
