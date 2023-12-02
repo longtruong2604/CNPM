@@ -28,7 +28,7 @@ function UploadPopup(props) {
 
   const renderFilePreview = () => {
     if (selectedFile) {
-        return <embed src={previewUrl} width="500" height="420" type="application/pdf" />;
+        return <embed src={previewUrl} className="review-file" type="application/pdf" />;
     }
     return null;
   };

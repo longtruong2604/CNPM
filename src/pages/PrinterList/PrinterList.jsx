@@ -15,6 +15,7 @@ import { SearchBar } from "../../components/SearchBar";
 import User from "../../components/User";
 import usePagination from "../../hooks/usePagination";
 import { MOCK_DATA } from "./MOCK_DATA";
+import axios from "axios";
 
 const colHeader = () => ({
   textAlign: "center",
@@ -23,17 +24,22 @@ const colHeader = () => ({
   color: "#023556",
 });
 
+
 export const PrinterList = () => {
+
+  const DATA = MOCK_DATA;
+
   const [search, setSearch] = useState("");
   const [content, setContent] = React.useState({
     venue: "",
     building: "",
     printerStatus: "",
   });
+
   const [rowNum, setRowNum] = React.useState(5);
 
   const [filteredData, setFilteredData] = useState(
-    [...MOCK_DATA].sort((a, b) => a.ID.localeCompare(b.ID))
+    [...DATA].sort((a, b) => a.Code.localeCompare(b.Code))
   );
 
   const [sort, setSort] = useState({ order: "DSC", col: "ID" });
@@ -51,7 +57,7 @@ export const PrinterList = () => {
           return search.toLowerCase() === ""
             ? item
             : item.printerName.toLowerCase().includes(search.toLowerCase()) ||
-                item.ID.toLowerCase().includes(search.toLowerCase());
+                item.Code.toLowerCase().includes(search.toLowerCase());
         })
         .filter(
           (item) =>
@@ -61,7 +67,6 @@ export const PrinterList = () => {
               !content.printerStatus)
         )
     );
-
     setPage(0);
   }, [search, content]);
 
@@ -104,7 +109,7 @@ export const PrinterList = () => {
               id={"venue"}
               value={"Cơ sở"}
               handleFilter={{ content: content.venue, setContent }}
-              items={[...new Set(MOCK_DATA.map((item) => item.venue))]}
+              items={[...new Set(DATA.map((item) => item.venue))]}
             ></FilterSelect>
           </Grid>
           <Grid>
@@ -116,7 +121,7 @@ export const PrinterList = () => {
                 content.venue === ""
                   ? [
                       ...new Set(
-                        MOCK_DATA.sort(function (a, b) {
+                        DATA.sort(function (a, b) {
                           if (a.building > b.building) {
                             return 1;
                           }
@@ -129,7 +134,7 @@ export const PrinterList = () => {
                     ]
                   : [
                       ...new Set(
-                        MOCK_DATA.filter((item) => item.venue === content.venue)
+                        DATA.filter((item) => item.venue === content.venue)
                           .sort(function (a, b) {
                             if (a.building > b.building) {
                               return 1;
@@ -153,7 +158,7 @@ export const PrinterList = () => {
                 content: content.printerStatus,
                 setContent,
               }}
-              items={[...new Set(MOCK_DATA.map((item) => item.printerStatus))]}
+              items={[...new Set(DATA.map((item) => item.printerStatus))]}
             ></FilterSelect>
           </Grid>
         </Grid>
@@ -221,7 +226,7 @@ export const PrinterList = () => {
           </Grid>
         </Box>
         {data.map((item) => {
-          return <PrinterListRow key={item.ID} {...item}></PrinterListRow>;
+          return <PrinterListRow key={item.Code} {...item}></PrinterListRow>;
         })}
       </Box>
       <Box

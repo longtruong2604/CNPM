@@ -78,10 +78,13 @@
 }
 
 .Change-file{
-    bottom: 165px;
-    right: 100px;
-    position: absolute;
+    margin-left: 18%;
     background-color: red;
+}
+
+.review-file{
+    width: 100%;
+    height: 300px;
 }
 
 .Upload-button1:disabled{

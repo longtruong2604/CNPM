@@ -44,8 +44,8 @@ app.listen(port,() => {
 
 app.get('/api/account', async (req, res) => {
   try {
-    const printers = await DataBaseAccount.find();
-    res.json(printers);
+    const account = await DataBaseAccount.find();
+    res.json(account);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });

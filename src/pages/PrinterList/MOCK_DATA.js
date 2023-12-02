@@ -1,6 +1,6 @@
 export const MOCK_DATA = [
   {
-    ID: "KUPLE0",
+    Code: "KUPLE0",
     printerName: "Xerox Phaser 6510",
     venue: 2,
     floor: 2,
@@ -8,7 +8,7 @@ export const MOCK_DATA = [
     building: "H2",
   },
   {
-    ID: "U7U898",
+    Code: "U7U898",
     printerName: "Brother HL-L2380DW",
     venue: 2,
     floor: 5,
@@ -16,7 +16,7 @@ export const MOCK_DATA = [
     building: "H6",
   },
   {
-    ID: "B2U263",
+    Code: "B2U263",
     printerName: "Canon PIXMA MX922",
     venue: 2,
     floor: 7,
@@ -24,7 +24,7 @@ export const MOCK_DATA = [
     building: "H2",
   },
   {
-    ID: "O7EXY5",
+    Code: "O7EXY5",
     printerName: "Canon PIXMA MX922",
     venue: 2,
     floor: 2,
@@ -32,7 +32,7 @@ export const MOCK_DATA = [
     building: "H6",
   },
   {
-    ID: "YR42DQ",
+    Code: "YR42DQ",
     printerName: "Samsung Xpress C1860FW",
     venue: 2,
     floor: 8,
@@ -40,7 +40,7 @@ export const MOCK_DATA = [
     building: "H1",
   },
   {
-    ID: "3J6BNE",
+    Code: "3J6BNE",
     printerName: "HP OfficeJet Pro 6978",
     venue: 1,
     floor: 2,
@@ -48,7 +48,7 @@ export const MOCK_DATA = [
     building: "A3",
   },
   {
-    ID: "890N3D",
+    Code: "890N3D",
     printerName: "Xerox Phaser 6510",
     venue: 1,
     floor: 4,
@@ -56,7 +56,7 @@ export const MOCK_DATA = [
     building: "A1",
   },
   {
-    ID: "M3T5AO",
+    Code: "M3T5AO",
     printerName: "Xerox Phaser 6510",
     venue: 1,
     floor: 1,
@@ -64,7 +64,7 @@ export const MOCK_DATA = [
     building: "A3",
   },
   {
-    ID: "FX91O3",
+    Code: "FX91O3",
     printerName: "Samsung Xpress C1860FW",
     venue: 1,
     floor: 4,
@@ -72,7 +72,7 @@ export const MOCK_DATA = [
     building: "C2",
   },
   {
-    ID: "ZLH6DR",
+    Code: "ZLH6DR",
     printerName: "Canon PIXMA MX922",
     venue: 1,
     floor: 1,
@@ -80,7 +80,7 @@ export const MOCK_DATA = [
     building: "C6",
   },
   {
-    ID: "2XU4I0",
+    Code: "2XU4I0",
     printerName: "HP OfficeJet Pro 6978",
     venue: 2,
     floor: 1,
@@ -88,7 +88,7 @@ export const MOCK_DATA = [
     building: "H6",
   },
   {
-    ID: "FQPO73",
+    Code: "FQPO73",
     printerName: "Brother HL-L2380DW",
     venue: 2,
     floor: 3,
@@ -96,7 +96,7 @@ export const MOCK_DATA = [
     building: "H6",
   },
   {
-    ID: "45PY10",
+    Code: "45PY10",
     printerName: "Canon PIXMA MX922",
     venue: 2,
     floor: 2,
@@ -104,7 +104,7 @@ export const MOCK_DATA = [
     building: "H2",
   },
   {
-    ID: "7YZ14F",
+    Code: "7YZ14F",
     printerName: "Samsung Xpress C1860FW",
     venue: 2,
     floor: 5,
@@ -112,7 +112,7 @@ export const MOCK_DATA = [
     building: "H1",
   },
   {
-    ID: "39DXQ9",
+    Code: "39DXQ9",
     printerName: "Samsung Xpress C1860FW",
     venue: 1,
     floor: 6,
@@ -120,7 +120,7 @@ export const MOCK_DATA = [
     building: "C5",
   },
   {
-    ID: "45BOHO",
+    Code: "45BOHO",
     printerName: "Canon PIXMA MX922",
     venue: 1,
     floor: 1,
@@ -128,7 +128,7 @@ export const MOCK_DATA = [
     building: "B5",
   },
   {
-    ID: "92F67S",
+    Code: "92F67S",
     printerName: "Samsung Xpress C1860FW",
     venue: 2,
     floor: 5,
@@ -136,7 +136,7 @@ export const MOCK_DATA = [
     building: "H6",
   },
   {
-    ID: "7X216E",
+    Code: "7X216E",
     printerName: "Samsung Xpress C1860FW",
     venue: 2,
     floor: 6,
@@ -144,7 +144,7 @@ export const MOCK_DATA = [
     building: "H1",
   },
   {
-    ID: "9I66MS",
+    Code: "9I66MS",
     printerName: "Xerox Phaser 6510",
     venue: 1,
     floor: 4,
@@ -152,7 +152,7 @@ export const MOCK_DATA = [
     building: "B2",
   },
   {
-    ID: "RNKC5R",
+    Code: "RNKC5R",
     printerName: "Brother HL-L2380DW",
     venue: 2,
     floor: 8,
@@ -160,7 +160,7 @@ export const MOCK_DATA = [
     building: "H1",
   },
   {
-    ID: "T5Y815",
+    Code: "T5Y815",
     printerName: "Epson WorkForce WF-3640",
     venue: 1,
     floor: 7,
@@ -168,7 +168,7 @@ export const MOCK_DATA = [
     building: "B1",
   },
   {
-    ID: "4JQ8WC",
+    Code: "4JQ8WC",
     printerName: "Canon PIXMA MX922",
     venue: 1,
     floor: 5,
@@ -176,7 +176,7 @@ export const MOCK_DATA = [
     building: "B3",
   },
   {
-    ID: "2MUIBL",
+    Code: "2MUIBL",
     printerName: "Epson WorkForce WF-3640",
     venue: 1,
     floor: 6,
@@ -184,7 +184,7 @@ export const MOCK_DATA = [
     building: "C3",
   },
   {
-    ID: "0UC4E9",
+    Code: "0UC4E9",
     printerName: "HP OfficeJet Pro 6978",
     venue: 2,
     floor: 7,
@@ -192,7 +192,7 @@ export const MOCK_DATA = [
     building: "H2",
   },
   {
-    ID: "Q63IQY",
+    Code: "Q63IQY",
     printerName: "Brother HL-L2380DW",
     venue: 1,
     floor: 1,
@@ -200,7 +200,7 @@ export const MOCK_DATA = [
     building: "A3",
   },
   {
-    ID: "N41ZC1",
+    Code: "N41ZC1",
     printerName: "Brother HL-L2380DW",
     venue: 1,
     floor: 5,
@@ -208,7 +208,7 @@ export const MOCK_DATA = [
     building: "A5",
   },
   {
-    ID: "3JAZ18",
+    Code: "3JAZ18",
     printerName: "Xerox Phaser 6510",
     venue: 1,
     floor: 1,
@@ -216,7 +216,7 @@ export const MOCK_DATA = [
     building: "A2",
   },
   {
-    ID: "H11BN7",
+    Code: "H11BN7",
     printerName: "Samsung Xpress C1860FW",
     venue: 1,
     floor: 1,
@@ -224,7 +224,7 @@ export const MOCK_DATA = [
     building: "C2",
   },
   {
-    ID: "X5G0T2",
+    Code: "X5G0T2",
     printerName: "Xerox Phaser 6510",
     venue: 1,
     floor: 5,
@@ -232,7 +232,7 @@ export const MOCK_DATA = [
     building: "C1",
   },
   {
-    ID: "1OPZ46",
+    Code: "1OPZ46",
     printerName: "Canon PIXMA MX922",
     venue: 2,
     floor: 8,
@@ -240,7 +240,7 @@ export const MOCK_DATA = [
     building: "H2",
   },
   {
-    ID: "4U478G",
+    Code: "4U478G",
     printerName: "Canon PIXMA MX922",
     venue: 2,
     floor: 3,
@@ -248,7 +248,7 @@ export const MOCK_DATA = [
     building: "H6",
   },
   {
-    ID: "D1K2XB",
+    Code: "D1K2XB",
     printerName: "Xerox Phaser 6510",
     venue: 2,
     floor: 1,
@@ -256,7 +256,7 @@ export const MOCK_DATA = [
     building: "H6",
   },
   {
-    ID: "7CZVC9",
+    Code: "7CZVC9",
     printerName: "Canon PIXMA MX922",
     venue: 1,
     floor: 6,
@@ -264,7 +264,7 @@ export const MOCK_DATA = [
     building: "B7",
   },
   {
-    ID: "52OJT6",
+    Code: "52OJT6",
     printerName: "Brother HL-L2380DW",
     venue: 2,
     floor: 7,
@@ -272,7 +272,7 @@ export const MOCK_DATA = [
     building: "H2",
   },
   {
-    ID: "V8Q94I",
+    Code: "V8Q94I",
     printerName: "Samsung Xpress C1860FW",
     venue: 2,
     floor: 8,
@@ -280,7 +280,7 @@ export const MOCK_DATA = [
     building: "H6",
   },
   {
-    ID: "285009",
+    Code: "285009",
     printerName: "Xerox Phaser 6510",
     venue: 2,
     floor: 2,
@@ -288,7 +288,7 @@ export const MOCK_DATA = [
     building: "H3",
   },
   {
-    ID: "72AJRR",
+    Code: "72AJRR",
     printerName: "Epson WorkForce WF-3640",
     venue: 1,
     floor: 2,
@@ -296,7 +296,7 @@ export const MOCK_DATA = [
     building: "B8",
   },
   {
-    ID: "3E5A97",
+    Code: "3E5A97",
     printerName: "Samsung Xpress C1860FW",
     venue: 1,
     floor: 7,
@@ -304,7 +304,7 @@ export const MOCK_DATA = [
     building: "A1",
   },
   {
-    ID: "85D68J",
+    Code: "85D68J",
     printerName: "Brother HL-L2380DW",
     venue: 2,
     floor: 3,
@@ -312,7 +312,7 @@ export const MOCK_DATA = [
     building: "H1",
   },
   {
-    ID: "M3IE7M",
+    Code: "M3IE7M",
     printerName: "Samsung Xpress C1860FW",
     venue: 1,
     floor: 7,
@@ -320,7 +320,7 @@ export const MOCK_DATA = [
     building: "B3",
   },
   {
-    ID: "MKJ05W",
+    Code: "MKJ05W",
     printerName: "Samsung Xpress C1860FW",
     venue: 2,
     floor: 4,
@@ -328,7 +328,7 @@ export const MOCK_DATA = [
     building: "H3",
   },
   {
-    ID: "C355X2",
+    Code: "C355X2",
     printerName: "Epson WorkForce WF-3640",
     venue: 2,
     floor: 3,
@@ -336,7 +336,7 @@ export const MOCK_DATA = [
     building: "H2",
   },
   {
-    ID: "D83FPC",
+    Code: "D83FPC",
     printerName: "HP OfficeJet Pro 6978",
     venue: 1,
     floor: 1,
@@ -344,7 +344,7 @@ export const MOCK_DATA = [
     building: "C6",
   },
   {
-    ID: "014551",
+    Code: "014551",
     printerName: "Epson WorkForce WF-3640",
     venue: 2,
     floor: 3,
@@ -352,7 +352,7 @@ export const MOCK_DATA = [
     building: "H2",
   },
   {
-    ID: "F0DZO9",
+    Code: "F0DZO9",
     printerName: "HP OfficeJet Pro 6978",
     venue: 2,
     floor: 6,
@@ -360,7 +360,7 @@ export const MOCK_DATA = [
     building: "H1",
   },
   {
-    ID: "771276",
+    Code: "771276",
     printerName: "Epson WorkForce WF-3640",
     venue: 1,
     floor: 3,
@@ -368,7 +368,7 @@ export const MOCK_DATA = [
     building: "C6",
   },
   {
-    ID: "1YZ79K",
+    Code: "1YZ79K",
     printerName: "Xerox Phaser 6510",
     venue: 1,
     floor: 4,
@@ -376,7 +376,7 @@ export const MOCK_DATA = [
     building: "C5",
   },
   {
-    ID: "V09PA9",
+    Code: "V09PA9",
     printerName: "Xerox Phaser 6510",
     venue: 1,
     floor: 6,
@@ -384,7 +384,7 @@ export const MOCK_DATA = [
     building: "B1",
   },
   {
-    ID: "92ICHG",
+    Code: "92ICHG",
     printerName: "HP OfficeJet Pro 6978",
     venue: 1,
     floor: 6,
@@ -392,7 +392,7 @@ export const MOCK_DATA = [
     building: "B2",
   },
   {
-    ID: "P1JX36",
+    Code: "P1JX36",
     printerName: "Samsung Xpress C1860FW",
     venue: 1,
     floor: 1,

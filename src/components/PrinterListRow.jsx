@@ -1,7 +1,8 @@
 import { Button } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PRINTER_STATUS } from "../constants";
+import axios from "axios";
 
 const item = (additionalStyles = {}) => ({
   textAlign: "center",
@@ -26,13 +27,14 @@ const statusColor = (status) => {
 };
 
 export const PrinterListRow = ({
-  ID,
+  Code,
   printerName,
   venue,
   building,
   floor,
   printerStatus,
 }) => {
+
   return (
     <Grid
       container
@@ -49,7 +51,7 @@ export const PrinterListRow = ({
       }}
     >
       <Grid sx={item()} lg={2}>
-        {ID}
+        {Code}
       </Grid>
       <Grid sx={item()} lg={2}>
         {printerName}

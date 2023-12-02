@@ -20,10 +20,11 @@ import { useState } from 'react'
 import LoginBar from '../../components/LoginBar'
 import Footer from '../../components/Footer'
 import "./Login.css";
-import { Link } from "react-router-dom";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login(props) {
+
     const { window } = props;
 
     const [showPassword, setShowPassword] = React.useState(false);
@@ -38,6 +39,8 @@ export default function Login(props) {
 
     const [accounts, setAccounts] = useState([]);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const [isLoggedIn, setLoggedIn] = useState(false);
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -64,7 +67,7 @@ export default function Login(props) {
             });
     }, []);
 
-    const LoginComplete = () => {
+    const LoginComplete = (window) => {
 
         if (username.trim() === '') {
             setError('Vui lòng nhập tên đăng nhập !');
@@ -80,7 +83,8 @@ export default function Login(props) {
 
         if(correctPassword) {
             setError('');
-            console.log('dang nhap thanh cong');
+            setLoggedIn(true); 
+            navigate('/app'); 
         }
         else {
             if(!correctUser){
@@ -90,6 +94,10 @@ export default function Login(props) {
                 setError('Mật khẩu không đúng !');
             }
         }
+    }
+
+    if (isLoggedIn) {
+        navigate('/app', { replace: true });
     }
 
     return (
@@ -135,7 +143,7 @@ export default function Login(props) {
                                 <Typography variant='h2' fontWeight={700} marginTop={-5}>
                                     Đăng nhập
                                 </Typography>
-                                {error &&  <p style={{color:'red',fontSize:'20px',fontWeight:'bold'}}>{error}</p>}
+                                {<p style={{color:'red',fontSize:'20px',fontWeight:'bold'}}>{error}</p>}
                             </Grid>
                             <Grid item xs={12} sx={{ marginTop: '10%' }}>
                                 <FormControl sx={{ m: 1, width: '50ch' }}>
@@ -185,7 +193,6 @@ export default function Login(props) {
                             <Button onClick={LoginComplete} type='submit' variant='contained' sx={{ textAlign: 'center', marginTop: '5%' }}>
                                 Đăng nhập
                             </Button>
-                            
                         </Grid>
                     </Grid>
                 </Grid>
