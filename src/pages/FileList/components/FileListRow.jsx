@@ -34,6 +34,7 @@ const statusColor = (status) => {
 };
 
 export const FileListRow = ({
+  _id,
   id,
   fileName,
   uploadDate,

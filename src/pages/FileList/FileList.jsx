@@ -17,7 +17,8 @@ import FilterSelect from "../../components/FilterSelect";
 import { SearchBar } from "../../components/SearchBar";
 import User from "../../components/User";
 import usePagination from "../../hooks/usePagination";
-import { MOCK_DATA } from "./MOCK_DATA";
+// import { MOCK_DATA } from "./MOCK_DATA";
+import axios from "axios";
 
 const colHeader = () => ({
   textAlign: "center",
@@ -27,6 +28,20 @@ const colHeader = () => ({
 });
 
 export default function FileList() {
+  const [initData, setInitData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/history")
+      .then((res) => {
+        setInitData(res.data.sort((a, b) => (a.uploadDate < b.uploadDate ? 1 : -1)));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+
   const [cleared, setCleared] = React.useState({ start: false, end: false });
   React.useEffect(() => {
     if (cleared.end) {
@@ -52,9 +67,7 @@ export default function FileList() {
   });
   const [rowNum, setRowNum] = React.useState(5);
 
-  const [filteredData, setFilteredData] = useState(
-    [...MOCK_DATA].sort((a, b) => (a.uploadDate < b.uploadDate ? 1 : -1))
-  );
+  const [filteredData, setFilteredData] = useState([]);
 
   const [sort, setSort] = useState({ order: "ASC", col: "uploadDate" });
 
@@ -106,6 +119,11 @@ export default function FileList() {
     }
   };
   return (
+    // initData.map(item => (
+    //   <div>
+    //     <p>{item.id}</p>
+    //   </div>
+    // ))
     <Box className="content" padding={2}>
       <User size="small" />
 
@@ -181,7 +199,7 @@ export default function FileList() {
                 content.venue === ""
                   ? [
                       ...new Set(
-                        MOCK_DATA.sort(function (a, b) {
+                        initData.sort(function (a, b) {
                           if (a.fileType > b.fileType) {
                             return 1;
                           }
@@ -194,7 +212,7 @@ export default function FileList() {
                     ]
                   : [
                       ...new Set(
-                        MOCK_DATA.filter((item) => item.venue === content.venue)
+                        initData.filter((item) => item.venue === content.venue)
                           .sort(function (a, b) {
                             if (a.fileType > b.fileType) {
                               return 1;
@@ -218,7 +236,7 @@ export default function FileList() {
                 content: content.fileStatus,
                 setContent,
               }}
-              items={[...new Set(MOCK_DATA.map((item) => item.fileStatus))]}
+              items={[...new Set(initData.map((item) => item.fileStatus))]}
             ></FilterSelect>
           </Grid>
         </Grid>
@@ -290,7 +308,7 @@ export default function FileList() {
           </Grid>
         </Box>
         {data.map((item) => {
-          return <FileListRow key={item.ID} {...item}></FileListRow>;
+          return <FileListRow key={item.id} {...item}></FileListRow>;
         })}
       </Box>
       <Box

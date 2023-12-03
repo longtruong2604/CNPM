@@ -154,7 +154,8 @@ export default function MenuBar(props) {
             </IconButton>
             <IconButton>
               <Typography variant="h6" color="white">
-                Nguyễn Văn A
+                Huỳnh Tấn Đạt 
+                {/* {username} */}
               </Typography>
             </IconButton>
             {/* <IconButton>
@@ -202,7 +203,7 @@ export default function MenuBar(props) {
             {
               text: "Trang chủ",
               icon: <HomeIcon fontSize="medium" sx={{ color: "white" }} />,
-              to: "/app/",
+              to: "/app/student",
             },
             {
               text: "Lịch sử",

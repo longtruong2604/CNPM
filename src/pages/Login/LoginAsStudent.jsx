@@ -84,7 +84,8 @@ export default function Login(props) {
         if(correctPassword) {
             setError('');
             setLoggedIn(true); 
-            navigate('/app'); 
+            navigate('/app/student'); 
+            //return username;
         }
         else {
             if(!correctUser){
@@ -97,7 +98,7 @@ export default function Login(props) {
     }
 
     if (isLoggedIn) {
-        navigate('/app', { replace: true });
+        navigate('/app/student', { replace: true });
     }
 
     return (

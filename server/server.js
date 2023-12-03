@@ -38,8 +38,23 @@ const SchemaAccount = mongoose.Schema(
   }
 );
 
+const SchemaHistory = mongoose.Schema(
+  {
+    fileName: String,
+    uploadDate: String,
+    fileType: String,
+    fileSize: String,
+    printerID: String,
+    fileStatus: String,
+  },
+  {
+    collection: "histories",
+  }
+);
+
 const DataBaseMachine = mongoose.model("DataMachine", SchemaMachine);
 const DataBaseAccount = mongoose.model("DataAccount", SchemaAccount);
+const DataBaseHistory = mongoose.model("DataHistory", SchemaHistory);
 
 app.listen(port, () => {
   console.log("Server is running on " + port);
@@ -49,6 +64,27 @@ app.get("/api/account", async (req, res) => {
   try {
     const account = await DataBaseAccount.find();
     res.json(account);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.post("/api/history", async (req, res) => {
+  try {
+    const newHistory = req.body;
+    const history = await DataBaseHistory.create(newHistory);
+    res.json(history);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.get("/api/history", async (req, res) => {
+  try {
+    const history = await DataBaseHistory.find();
+    res.json(history);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });

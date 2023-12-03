@@ -77,9 +77,24 @@ export const PrinterListRow = ({
             textTransform: "capitalize",
             paddingLeft: 2,
             paddingRight: 2,
+            marginRight: 4,
+            backgroundColor: 'red',
           })}
         >
-          Chọn
+          Xóa 
+        </Button>
+        <Button
+          sx={item({
+            backgroundColor: "#023556",
+            color: "#FFFFFF",
+            borderRadius: 3,
+            textTransform: "capitalize",
+            paddingLeft: 2,
+            paddingRight: 2,
+            backgroundColor:'green'
+          })}
+        >
+          Chỉnh Sửa 
         </Button>
         </Link>
       </Grid>

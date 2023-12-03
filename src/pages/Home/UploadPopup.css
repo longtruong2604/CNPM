@@ -15,8 +15,8 @@
     padding: 32px;
     width: 100%;
     height: 90%;
-    max-width: 640px;
-    max-height: 780px;
+    max-width: 740px;
+    max-height: 400px;
     background-color: white;
 }
 
@@ -67,29 +67,27 @@
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
-    margin-top: 20px;
-    margin-left: 60px;
+    margin-top: 40px;
+    margin-left: 10px;
+    margin-right: 15px;
     width: 200px;
 }
 
 .Upload-button1{
-    margin-left: 50px;
+    margin-left: 10px;
     background-color: green;
 }
 
 .Change-file{
-    margin-left: 18%;
     background-color: red;
 }
 
-.review-file{
-    width: 100%;
-    height: 300px;
+.Upload-button1:disabled{
+    background-color: lightgreen;
 }
 
-.Upload-button1:disabled{
-    margin-left: 50px;
-    background-color: lightgreen;
+.Change-file:disabled{
+    background-color: pink;
 }
 
 .Upload-button:active {
@@ -99,15 +97,89 @@
   }
 
 .Upload-frame {
-    border-style: dotted;
+    border-style: solid;
     background-color: lightgray;
     padding: 20px;
     font-size: 20px;
     border-radius: 10px;
     cursor: pointer;
     width: 100%;
-    max-width: 550px;
+    max-width: 650px;
     align-items: center;
     margin-top: 20px;
     margin-left: 10px;
+}
+
+
+.functionEdit {
+    width: 40%;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    border-right: 2px solid #000000;
+    height: 650px;
+}
+
+.functionEdit input{
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 2%;
+    outline: none;
+    padding: 1%;
+    font-size: 18px;
+}
+
+.functionEdit input:nth-child(1){
+    margin: 2% auto;
+    height: 40px;
+}
+
+.functionEdit label{
+    display: block;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.functionEdit select{
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 5%;
+}
+
+.preview-file{
+    
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    font-weight: bold;
+}   
+
+.functionEdit button{
+    width: 15%;
+    height: 50px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.Print{
+    background-color: green;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 1);
+    cursor: pointer;
+}
+
+.Print:disabled{
+    background-color: lightgreen;
+    cursor: auto;
 }

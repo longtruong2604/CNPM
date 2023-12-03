@@ -18,19 +18,9 @@ function UploadPopup(props) {
     setPreviewUrl(null);
   };
 
-  const truncateFileName = (fileName, maxLength) => {
-    if (fileName.length <= maxLength) {
-      return fileName;
-    }
-    const truncatedName = fileName.substring(0, maxLength - 3) + ' ... ';
-    return truncatedName;
-  };
-
-  const renderFilePreview = () => {
-    if (selectedFile) {
-        return <embed src={previewUrl} className="review-file" type="application/pdf" />;
-    }
-    return null;
+  const handleUpload = () => {
+    //props.setFile(selectedFile);
+    props.setTrigger(false);
   };
 
   return props.trigger ? (
@@ -40,21 +30,13 @@ function UploadPopup(props) {
           X
         </button>
         {props.children}
-        {/* <form>
-          <h3 className="Upload-text">Link URL</h3>
-          <input className="Upload" type="text"></input>
-        </form>
-        <h3 className="Upload-text2">Hoặc:</h3> */}
-        
         <p class="Upload-frame">{selectedFile?
           (
           <div>
-            {renderFilePreview()}
-            <b>File Name:</b> <i>{truncateFileName(selectedFile.name, 10)}</i><br/>
+            <b>File Name:</b> <i>{selectedFile.name}</i><br/>
             <b>File Size:</b> <i>{(selectedFile.size/1024).toFixed(2)} KB</i>
-            <button className="Change-file" onClick={handleChangeFile}>Remove File</button>
           </div>)
-          :'Không có file nào được chọn (Chỉ hỗ trợ file .pdf)'}
+          :'Không có file nào được chọn'}
         </p>
         <input
         type="file"
@@ -65,15 +47,23 @@ function UploadPopup(props) {
       <button className="Upload-button" onClick={() => document.getElementById('fileInput').click()}>
         Choose File
       </button>
-      <Link to="printer-list">
-        <button className="Upload-button1" disabled={!selectedFile}>
+      <button className="Change-file"
+      disabled={!selectedFile}
+       onClick={handleChangeFile}>
+        Remove File
+        </button>
+
+        <button
+          className="Upload-button1"
+          disabled={!selectedFile}
+          onClick={handleUpload}
+        >
           Upload
         </button>
-      </Link>
       </div>
     </div>
   ) : (
-    ""
+    ''
   );
 }
 
