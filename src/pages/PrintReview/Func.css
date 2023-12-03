@@ -1,0 +1,88 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.Print-button {
+  padding: 10px 15px;
+  font-size: 30px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  outline-style: solid;
+  color: black;
+  background-color: lightblue;
+  border: none;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+.Print-button:active {
+  background-color: lightblue;
+  transform: translateY(4px);
+}  
+
+.Choose-button {
+  padding: 10px 15px;
+  font-size: 30px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  outline-style: solid;
+  color: black;
+  background-color: lightblue;
+  border: none;
+  border-radius: 15px;
+  margin-top: -10px;
+  margin-left: 10px;
+} 
+
+.Choose-button:active {
+  background-color: lightblue;
+  transform: translateY(4px);
+}  
+
+.number-copy {
+  margin-top: 18px;
+  margin-left: 100px;
+}
+
+.text {
+  margin: 12px 0px;
+  color: blue;
+}
+
+.printer {
+  outline-style: solid;
+  outline-color: black;
+  padding: 0;
+  border-radius: 10px;
+  background-color: lightblue;
+}
+
+.Page-select {
+  outline-style: solid;
+  outline-color: black;
+  border-radius: 10px;
+}
+
+.page-input{
+  height: 20px;
+  width: 240px;
+}
+
+.rectangle {
+  display: inline-block;
+  width: 500px;
+  height: 600px;
+  outline-style: solid;
+  outline-color: black;
+  background-color: lightblue;
+  position: absolute;
+  top: 300px;
+  right: 150px;
+}
