@@ -1,8 +1,7 @@
-import { Button } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import React, { useEffect, useState } from "react";
-import { PRINTER_STATUS } from "../constants";
-import axios from "axios";
+import React from "react";
+import { FILE_STATUS, PRINTER_STATUS } from "../../../constants";
+import dayjs from "dayjs";
 
 const item = (additionalStyles = {}) => ({
   textAlign: "center",
@@ -21,24 +20,32 @@ const statusColor = (status) => {
       return PRINTER_STATUS.IDLE;
     case "Đang bảo trì":
       return PRINTER_STATUS.DOWNED;
+    case "In xong":
+      return FILE_STATUS.DONE;
+    case "Đang in":
+      return FILE_STATUS.PRINTING;
+    case "Chưa in":
+      return FILE_STATUS.PENDING;
+    case "Chưa xác nhận":
+      return FILE_STATUS.PROCESSING;
     default:
       break;
   }
 };
 
-export const PrinterListRow = ({
-  Code,
-  printerName,
-  venue,
-  building,
-  floor,
-  printerStatus,
+export const FileListRow = ({
+  id,
+  fileName,
+  uploadDate,
+  fileType,
+  fileSize,
+  printerID,
+  fileStatus,
 }) => {
-
   return (
     <Grid
       container
-      columns={11}
+      columns={14}
       sx={{
         backgroundColor: "#E9F3F9",
         opacity: 0.82,
@@ -51,36 +58,25 @@ export const PrinterListRow = ({
       }}
     >
       <Grid sx={item()} lg={2}>
-        {Code}
+        {dayjs(uploadDate).format("DD/MM/YYYY")}
       </Grid>
       <Grid sx={item()} lg={2}>
-        {printerName}
-      </Grid>
-      <Grid sx={item()} lg={1}>
-        {venue}
-      </Grid>
-      <Grid sx={item()} lg={1}>
-        {building}
-      </Grid>
-      <Grid sx={item()} lg={1}>
-        {floor}
-      </Grid>
-      <Grid sx={item({ color: statusColor(printerStatus) })} lg={2}>
-        {printerStatus}
+        {id}
       </Grid>
       <Grid sx={item()} lg={2}>
-        <Button
-          sx={item({
-            backgroundColor: "#023556",
-            color: "#FFFFFF",
-            borderRadius: 3,
-            textTransform: "capitalize",
-            paddingLeft: 2,
-            paddingRight: 2,
-          })}
-        >
-          Chọn
-        </Button>
+        {fileName}
+      </Grid>
+      <Grid sx={item()} lg={2}>
+        {fileType}
+      </Grid>
+      <Grid sx={item()} lg={2}>
+        {fileSize}
+      </Grid>
+      <Grid sx={item()} lg={2}>
+        {printerID}
+      </Grid>
+      <Grid sx={item({ color: statusColor(fileStatus) })} lg={2}>
+        {fileStatus}
       </Grid>
     </Grid>
     // </Box>

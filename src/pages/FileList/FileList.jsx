@@ -12,7 +12,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
 import React, { useEffect, useState } from "react";
-import { FileListRow } from "../../components/FileListRow";
+import { FileListRow } from "./components/FileListRow";
 import FilterSelect from "../../components/FilterSelect";
 import { SearchBar } from "../../components/SearchBar";
 import User from "../../components/User";
