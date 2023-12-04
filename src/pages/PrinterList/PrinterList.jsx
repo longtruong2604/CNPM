@@ -37,7 +37,6 @@ export const PrinterList = () => {
       });
   }, []);
 
-
   const [search, setSearch] = useState("");
   const [content, setContent] = useState({
     venue: "",
@@ -56,10 +55,6 @@ export const PrinterList = () => {
   );
 
   useEffect(() => {
-    if (checkFirstRender.current) {
-      checkFirstRender.current = false;
-      return;
-    }
     setFilteredData(
       initData
         .filter((item) => {
@@ -75,7 +70,6 @@ export const PrinterList = () => {
             (item.printerStatus === content.printerStatus ||
               !content.printerStatus)
         )
-
     );
     setPage(0);
   }, [search, content, initData]);
