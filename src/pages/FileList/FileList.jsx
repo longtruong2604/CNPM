@@ -20,6 +20,7 @@ import usePagination from "../../hooks/usePagination";
 // import { MOCK_DATA } from "./MOCK_DATA";
 import axios from "axios";
 
+
 const colHeader = () => ({
   textAlign: "center",
   fontWeight: 700,
@@ -43,6 +44,7 @@ export default function FileList() {
         console.error(error);
       });
   }, []);
+
 
   const [cleared, setCleared] = React.useState({ start: false, end: false });
   React.useEffect(() => {
@@ -79,6 +81,10 @@ export default function FileList() {
   );
 
   useEffect(() => {
+    if (checkFirstRender.current) {
+      checkFirstRender.current = false;
+      return;
+    }
     setFilteredData(
       initData
         .filter((item) => {
@@ -96,7 +102,6 @@ export default function FileList() {
             (item.fileStatus === content.fileStatus || !content.fileStatus)
         )
     );
-
     setPage(0);
   }, [search, content, initData]);
 
