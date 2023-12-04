@@ -9,12 +9,12 @@ import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import React, { useEffect, useRef, useState } from "react";
 
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import axios from "axios";
 import FilterSelect from "../../components/FilterSelect";
-import { PrinterListRow } from "../../components/PrinterListRow";
+import { PrinterListRow } from "./components/PrinterListRow";
 import { SearchBar } from "../../components/SearchBar";
 import User from "../../components/User";
 import usePagination from "../../hooks/usePagination";
-import { MOCK_DATA } from "./MOCK_DATA";
 
 const colHeader = () => ({
   textAlign: "center",
@@ -24,20 +24,31 @@ const colHeader = () => ({
 });
 
 export const PrinterList = () => {
-  const checkFirstRender = useRef(true);
+  const [initData, setInitData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/machine")
+      .then((response) => {
+        setInitData(response.data.sort((a, b) => a.Code.localeCompare(b.Code)));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+
   const [search, setSearch] = useState("");
-  const [content, setContent] = React.useState({
+  const [content, setContent] = useState({
     venue: "",
     building: "",
     printerStatus: "",
   });
-  const [rowNum, setRowNum] = React.useState(5);
 
-  const [filteredData, setFilteredData] = useState(
-    [...MOCK_DATA].sort((a, b) => a.ID.localeCompare(b.ID))
-  );
+  const [rowNum, setRowNum] = useState(5);
 
-  const [sort, setSort] = useState({ order: "DSC", col: "ID" });
+  const [filteredData, setFilteredData] = useState([]);
+  const [sort, setSort] = useState({ order: "DSC", col: "Code" });
 
   const { data, page, totalPages, setPage } = usePagination(
     filteredData,
@@ -50,22 +61,24 @@ export const PrinterList = () => {
       return;
     }
     setFilteredData(
-      MOCK_DATA.filter((item) => {
-        return search.toLowerCase() === ""
-          ? item
-          : item.printerName.toLowerCase().includes(search.toLowerCase()) ||
-              item.ID.toLowerCase().includes(search.toLowerCase());
-      }).filter(
-        (item) =>
-          (item.venue === content.venue || !content.venue) &&
-          (item.building === content.building || !content.building) &&
-          (item.printerStatus === content.printerStatus ||
-            !content.printerStatus)
-      )
-    );
+      initData
+        .filter((item) => {
+          return search.toLowerCase() === ""
+            ? item
+            : item.printerName.toLowerCase().includes(search.toLowerCase()) ||
+                item.Code.toLowerCase().includes(search.toLowerCase());
+        })
+        .filter(
+          (item) =>
+            (item.venue === content.venue || !content.venue) &&
+            (item.building === content.building || !content.building) &&
+            (item.printerStatus === content.printerStatus ||
+              !content.printerStatus)
+        )
 
+    );
     setPage(0);
-  }, [search, content]);
+  }, [search, content, initData]);
 
   const handleSort = (name) => {
     if (name === sort.col) {
@@ -87,7 +100,7 @@ export const PrinterList = () => {
       setSort({ col: name, order: "DSC" });
     }
   };
-
+  console.log(filteredData);
   return (
     <Box className="content" margin={2}>
       <User size="small" />
@@ -105,7 +118,7 @@ export const PrinterList = () => {
               id={"venue"}
               value={"Cơ sở"}
               handleFilter={{ content: content.venue, setContent }}
-              items={[...new Set(MOCK_DATA.map((item) => item.venue))]}
+              items={[...new Set(initData.map((item) => item.venue))]}
             ></FilterSelect>
           </Grid>
           <Grid>
@@ -117,20 +130,23 @@ export const PrinterList = () => {
                 content.venue === ""
                   ? [
                       ...new Set(
-                        MOCK_DATA.sort(function (a, b) {
-                          if (a.building > b.building) {
-                            return 1;
-                          }
-                          if (b.building > a.building) {
-                            return -1;
-                          }
-                          return 0;
-                        }).map((item) => item.building)
+                        initData
+                          .sort(function (a, b) {
+                            if (a.building > b.building) {
+                              return 1;
+                            }
+                            if (b.building > a.building) {
+                              return -1;
+                            }
+                            return 0;
+                          })
+                          .map((item) => item.building)
                       ),
                     ]
                   : [
                       ...new Set(
-                        MOCK_DATA.filter((item) => item.venue === content.venue)
+                        initData
+                          .filter((item) => item.venue === content.venue)
                           .sort(function (a, b) {
                             if (a.building > b.building) {
                               return 1;
@@ -154,7 +170,7 @@ export const PrinterList = () => {
                 content: content.printerStatus,
                 setContent,
               }}
-              items={[...new Set(MOCK_DATA.map((item) => item.printerStatus))]}
+              items={[...new Set(initData.map((item) => item.printerStatus))]}
             ></FilterSelect>
           </Grid>
         </Grid>
@@ -167,7 +183,7 @@ export const PrinterList = () => {
               {
                 gridSize: 2,
                 headerName: "ID",
-                colName: "ID",
+                colName: "Code",
               },
               {
                 gridSize: 2,
@@ -221,7 +237,7 @@ export const PrinterList = () => {
           </Grid>
         </Box>
         {data.map((item) => {
-          return <PrinterListRow key={item.ID} {...item}></PrinterListRow>;
+          return <PrinterListRow key={item._id} {...item}></PrinterListRow>;
         })}
       </Box>
       <Box

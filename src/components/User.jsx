@@ -41,7 +41,7 @@ function User({ size }) {
               color: "#023556",
             }}
           >
-            A
+            
           </Avatar>
         </Grid>
         <Grid lg={3}>
@@ -50,7 +50,8 @@ function User({ size }) {
               variant={variant[size].userName}
               sx={{ fontWeight: 500 }}
             >
-              Nguyễn Văn A
+              Huỳnh Tấn Đạt
+              {/*{username}*/}
             </Typography>
           </Box>
           <Box> 

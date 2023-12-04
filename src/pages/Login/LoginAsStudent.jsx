@@ -20,9 +20,11 @@ import { useState } from 'react'
 import LoginBar from '../../components/LoginBar'
 import Footer from '../../components/Footer'
 import "./Login.css";
-import { Link } from "react-router-dom";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login(props) {
+
     const { window } = props;
 
     const [showPassword, setShowPassword] = React.useState(false);
@@ -34,6 +36,11 @@ export default function Login(props) {
     };
 
     const container = window !== undefined ? () => window().document.body : undefined;
+
+    const [accounts, setAccounts] = useState([]);
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const [isLoggedIn, setLoggedIn] = useState(false);
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -49,6 +56,51 @@ export default function Login(props) {
         setPassword(e.target.value);
         setPasswordError(!e.target.value);
     };
+
+    React.useEffect(() => {
+        axios.get('http://localhost:5000/api/account')
+            .then(response => {
+                setAccounts(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
+
+    const LoginComplete = (window) => {
+
+        if (username.trim() === '') {
+            setError('Vui lòng nhập tên đăng nhập !');
+            return;
+        }
+    
+        if (password.trim() === '') {
+            setError('Vui lòng nhập mật khẩu !');
+            return;
+        }
+        const correctUser = accounts.find((user) => user.username === username );
+        const correctPassword = accounts.find((user) => user.username === username && user.password === password);
+
+        if(correctPassword) {
+            setError('');
+            setLoggedIn(true); 
+            navigate('/app/student'); 
+            //return username;
+        }
+        else {
+            if(!correctUser){
+                setError('Tên đăng nhập không đúng !');
+            }
+            else if(!correctPassword){
+                setError('Mật khẩu không đúng !');
+            }
+        }
+    }
+
+    if (isLoggedIn) {
+        navigate('/app/student', { replace: true });
+    }
+
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <CssBaseline />
@@ -89,20 +141,20 @@ export default function Login(props) {
                     <Grid item xs={6}>
                         <Grid sx={{ textAlign: 'center' }}>
                             <Grid item xs={12} >
-                                <Typography variant='h2' fontWeight={700}>
+                                <Typography variant='h2' fontWeight={700} marginTop={-5}>
                                     Đăng nhập
                                 </Typography>
+                                {<p style={{color:'red',fontSize:'20px',fontWeight:'bold'}}>{error}</p>}
                             </Grid>
                             <Grid item xs={12} sx={{ marginTop: '10%' }}>
                                 <FormControl sx={{ m: 1, width: '50ch' }}>
                                     <TextField
-                                        label="Username"
+                                        label="Tên đăng nhập"
                                         id="outlined-start-adornment"
                                         required
                                         value={username}
                                         onChange={handleUsernameChange}
                                         error={usernameError}
-                                        helperText={usernameError ? "Không được để trống" : ""}
                                         InputProps={{
                                             startAdornment: <InputAdornment position="start"><AccountCircle /></InputAdornment>,
                                         }}
@@ -111,7 +163,7 @@ export default function Login(props) {
                             </Grid>
                             <Grid item xs={12} sx={{ marginTop: '5%' }}>
                                 <FormControl sx={{ m: 1, width: '50ch' }} variant="outlined">
-                                    <InputLabel htmlFor="outlined-adornment-password" required>Password</InputLabel>
+                                    <InputLabel htmlFor="outlined-adornment-password" required>Mật khẩu</InputLabel>
                                     <OutlinedInput
                                         id="outlined-adornment-password"
                                         type={showPassword ? 'text' : 'password'}
@@ -128,26 +180,20 @@ export default function Login(props) {
                                                 </IconButton>
                                             </InputAdornment>
                                         }
-                                        label="Password"
+                                        label="Mật khẩu"
                                         required
                                         value={password}
                                         onChange={handlePasswordChange}
                                         error={passwordError}
-                                        helperText={passwordError ? "Không được để trống" : ""}
                                     />
                                     <Typography sx={{ textAlign: 'right', marginTop: '3%' }}>
                                         Quên mật khẩu ?
                                     </Typography>
-
                                 </FormControl>
-
-
                             </Grid>
-                            <Link to="/app" style={{ textDecoration: "none" }}>
-                            <Button variant='contained' sx={{ textAlign: 'center', marginTop: '5%' }}>
+                            <Button onClick={LoginComplete} type='submit' variant='contained' sx={{ textAlign: 'center', marginTop: '5%' }}>
                                 Đăng nhập
                             </Button>
-                            </Link>
                         </Grid>
                     </Grid>
                 </Grid>
