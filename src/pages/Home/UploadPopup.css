@@ -148,7 +148,6 @@
 }
 
 .preview-file{
-    
     width: 60%;
     display: flex;
     justify-content: center;
@@ -182,4 +181,35 @@
 .Print:disabled{
     background-color: lightgreen;
     cursor: auto;
+}
+
+.Choose{
+    border: none;
+    border-radius: 15px;
+    background-color: #023556;
+    color: white;
+    font-size: 15px;
+    margin-top: -5%;
+    margin-bottom: 5%;
+    cursor: pointer;
+}
+
+.functionEdit label:nth-child(2){
+    font-size: 30px;
+}
+
+input[type='file']{
+    display: none;
+}
+
+.functionEdit select{
+    border-radius: 15px;
+    height: 50px;
+    width: 80px;
+    font-size: 15px;
+    padding: 2%;
+}
+
+.label-file-upload{
+    cursor: pointer;
 }

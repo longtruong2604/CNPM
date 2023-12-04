@@ -6,7 +6,6 @@ import { RouterProvider, createBrowserRouter, BrowserRouter as Router, Route, Ro
 import "./App.css";
 import RootLayout from "./layouts/RootLayout";
 import { PrinterList } from "./pages/PrinterList/PrinterList";
-import { Admin } from "./pages/PrinterList/admin_List";
 import Landing from "./pages/Landing/Landing";
 import FuncSelect from "./pages/Home/FuncSelect";
 import LoginAsStudent from "./pages/Login/LoginAsStudent";
