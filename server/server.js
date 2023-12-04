@@ -5,6 +5,9 @@ const cors = require("cors");
 
 const app = express();
 app.use(cors());
+
+app.use(express.json());
+
 const port = 5000;
 
 dotenv.config();
@@ -105,6 +108,7 @@ app.get("/api/machine", async (req, res) => {
 // Route thêm máy in mới
 app.post("/api/machine", async (req, res) => {
   try {
+    console.log(req.body);
     const newPrinter = req.body;
     const printer = await DataBaseMachine.create(newPrinter);
     res.json(printer);
@@ -137,7 +141,7 @@ app.put("/api/machine/:Code", async (req, res) => {
 app.delete("/api/machine/:Code", async (req, res) => {
   try {
     const Code = req.params.Code;
-    await DataBase.findOneAndDelete({
+    await DataBaseMachine.findOneAndDelete({
       Code: Code,
     });
     res.json({ message: "Printer deleted" });

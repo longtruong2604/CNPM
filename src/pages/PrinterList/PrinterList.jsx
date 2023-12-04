@@ -24,7 +24,6 @@ const colHeader = () => ({
 });
 
 export const PrinterList = () => {
-  const checkFirstRender = useRef(true);
   const [initData, setInitData] = useState([]);
 
   useEffect(() => {

@@ -2,7 +2,13 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import { RouterProvider, createBrowserRouter, BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  BrowserRouter as Router,
+  Route,
+  Routes,
+} from "react-router-dom";
 import "./App.css";
 import RootLayout from "./layouts/RootLayout";
 import { PrinterList } from "./pages/PrinterList/PrinterList";
@@ -32,8 +38,16 @@ const router = createBrowserRouter([
         element: <PrinterList />,
       },
       {
+        path: "/app/student/printer-list",
+        element: <PrinterList />,
+      },
+      {
         path: "/app/history",
         element: <FileList />,
+      },
+      {
+        path: "/app/admin/printer-list",
+        element: <Admin />,
       },
     ],
   },
@@ -50,6 +64,5 @@ const router = createBrowserRouter([
 function App() {
   return <RouterProvider router={router} />;
 }
-
 
 export default App;

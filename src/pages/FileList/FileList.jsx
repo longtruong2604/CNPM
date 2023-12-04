@@ -34,13 +34,15 @@ export default function FileList() {
     axios
       .get("http://localhost:5000/api/history")
       .then((res) => {
-        setInitData(res.data.sort((a, b) => (a.uploadDate < b.uploadDate ? 1 : -1)));
+        console.log(res.data);
+        setInitData(
+          res.data.sort((a, b) => (a.uploadDate < b.uploadDate ? 1 : -1))
+        );
       })
       .catch((error) => {
         console.error(error);
       });
   }, []);
-
 
   const [cleared, setCleared] = React.useState({ start: false, end: false });
   React.useEffect(() => {
@@ -78,7 +80,7 @@ export default function FileList() {
 
   useEffect(() => {
     setFilteredData(
-      filteredData
+      initData
         .filter((item) => {
           return search.toLowerCase() === ""
             ? item
@@ -96,7 +98,7 @@ export default function FileList() {
     );
 
     setPage(0);
-  }, [search, content]);
+  }, [search, content, initData]);
 
   const handleSort = (name) => {
     if (name === sort.col) {
@@ -199,20 +201,23 @@ export default function FileList() {
                 content.venue === ""
                   ? [
                       ...new Set(
-                        initData.sort(function (a, b) {
-                          if (a.fileType > b.fileType) {
-                            return 1;
-                          }
-                          if (b.fileType > a.fileType) {
-                            return -1;
-                          }
-                          return 0;
-                        }).map((item) => item.fileType)
+                        initData
+                          .sort(function (a, b) {
+                            if (a.fileType > b.fileType) {
+                              return 1;
+                            }
+                            if (b.fileType > a.fileType) {
+                              return -1;
+                            }
+                            return 0;
+                          })
+                          .map((item) => item.fileType)
                       ),
                     ]
                   : [
                       ...new Set(
-                        initData.filter((item) => item.venue === content.venue)
+                        initData
+                          .filter((item) => item.venue === content.venue)
                           .sort(function (a, b) {
                             if (a.fileType > b.fileType) {
                               return 1;
@@ -308,7 +313,13 @@ export default function FileList() {
           </Grid>
         </Box>
         {data.map((item) => {
-          return <FileListRow key={item.id} {...item}></FileListRow>;
+          return (
+            <FileListRow
+              
+              key={item._id}
+              {...item}
+            ></FileListRow>
+          );
         })}
       </Box>
       <Box
