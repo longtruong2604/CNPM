@@ -1,152 +1,154 @@
 .Popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2 );
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Popup-container {
-    position: relative;
-    padding: 32px;
-    width: 100%;
-    height: 90%;
-    max-width: 740px;
-    max-height: 400px;
-    background-color: white;
+  position: relative;
+  padding: 32px;
+  width: 100%;
+  height: 90%;
+  max-width: 740px;
+  max-height: 400px;
+  background-color: white;
 }
 
 .Popup .Close_Popup {
-    position: absolute;
-    border: none;
-    font-size: 24px;
-    background-color: white;
-    top: 16px;
-    right: 16px;
-    cursor: pointer;
+  position: absolute;
+  border: none;
+  font-size: 24px;
+  background-color: white;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
 }
 
-.Upload{
-    width: 100%;
-    max-width: 600px;
-    padding: 5px 20px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    background-color: #f8f8f8;
-    font-size: 16px;
-    resize: none;
-    margin-bottom: 0;
+.Upload {
+  width: 100%;
+  max-width: 600px;
+  padding: 5px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+  margin-bottom: 0;
 }
 
-.Upload-text{
-    text-align: left;
-    margin-left: 30px;
-    margin-bottom: 5px;
+.Upload-text {
+  text-align: left;
+  margin-left: 30px;
+  margin-bottom: 5px;
 }
-.Upload-text2{
-    text-align: left;
-    margin-left: 30px;
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-
-.Upload-button,.Upload-button1, .Change-file {
-    padding: 15px 25px;
-    font-size: 24px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: blue;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
-    margin-top: 40px;
-    margin-left: 10px;
-    margin-right: 15px;
-    width: 200px;
+.Upload-text2 {
+  text-align: left;
+  margin-left: 30px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
-.Upload-button1{
-    margin-left: 10px;
-    background-color: green;
+.Upload-button,
+.Upload-button1,
+.Change-file {
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: blue;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  margin-top: 40px;
+  margin-left: 10px;
+  margin-right: 15px;
+  width: 200px;
 }
 
-.Change-file{
-    background-color: red;
+.Upload-button1 {
+  margin-left: 10px;
+  background-color: green;
 }
 
-.Upload-button1:disabled{
-    background-color: lightgreen;
+.Change-file {
+  background-color: red;
 }
 
-.Change-file:disabled{
-    background-color: pink;
+.Upload-button1:disabled {
+  background-color: lightgreen;
+}
+
+.Change-file:disabled {
+  background-color: pink;
 }
 
 .Upload-button:active {
-    background-color: blue;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
+  background-color: blue;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 
 .Upload-frame {
-    border-style: solid;
-    background-color: lightgray;
-    padding: 20px;
-    font-size: 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    width: 100%;
-    max-width: 650px;
-    align-items: center;
-    margin-top: 20px;
-    margin-left: 10px;
+  border-style: solid;
+  background-color: lightgray;
+  padding: 20px;
+  font-size: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 650px;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 10px;
 }
-
 
 .functionEdit {
-    width: 40%;
-    text-align: center;
-    display: inline-block;
-    vertical-align: middle;
-    border-right: 2px solid #000000;
-    height: 650px;
+  width: 40%;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  border-right: 2px solid #000000;
+  height: 650px;
 }
 
-.functionEdit input{
-    margin: 0 auto;
-    display: block;
-    margin-bottom: 2%;
-    outline: none;
-    padding: 1%;
-    font-size: 18px;
+.functionEdit input {
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 2%;
+  outline: none;
+  padding: 1%;
+  font-size: 18px;
 }
 
-.functionEdit input:nth-child(1){
-    margin: 2% auto;
-    height: 40px;
+.functionEdit input:nth-child(1) {
+  margin: 2% auto;
+  height: 40px;
 }
 
-.functionEdit label{
-    display: block;
-    text-transform: uppercase;
-    font-size: 20px;
-    font-weight: bold;
+.functionEdit label {
+  display: block;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.functionEdit select{
-    margin: 0 auto;
-    display: block;
-    margin-bottom: 5%;
+.functionEdit select {
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 5%;
 }
 
+<<<<<<< Updated upstream
 .preview-file{
     width: 60%;
     display: flex;
@@ -155,32 +157,73 @@
     font-size: 50px;
     font-weight: bold;
 }   
+=======
+.preview-file {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  font-weight: bold;
+}
+>>>>>>> Stashed changes
 
-.functionEdit button{
-    width: 15%;
-    height: 50px;
+.functionEdit button {
+  width: 15%;
+  height: 50px;
 }
 
 .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.Print{
-    background-color: green;
-    border-radius: 15px;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    border: none;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 1);
-    cursor: pointer;
+.Print {
+  background-color: green;
+  border-radius: 15px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border: none;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 1);
+  cursor: pointer;
 }
 
-.Print:disabled{
-    background-color: lightgreen;
-    cursor: auto;
+.Print:disabled {
+  background-color: lightgreen;
+  cursor: auto;
+}
+
+.Choose {
+  border: none;
+  border-radius: 15px;
+  background-color: #023556;
+  color: white;
+  font-size: 15px;
+  margin-top: -5%;
+  margin-bottom: 5%;
+  cursor: pointer;
+}
+
+.functionEdit label:nth-child(2) {
+  font-size: 30px;
+}
+
+input[type='file'] {
+  display: none;
+}
+
+.functionEdit select {
+  border-radius: 15px;
+  height: 50px;
+  width: 80px;
+  font-size: 15px;
+  padding: 2%;
+}
+
+.label-file-upload {
+  cursor: pointer;
 }
 
 .Choose{
